@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_conn">Geen verbinding</string>
+    <string name="no_conn_text">Het toestel kon niet verbinden met de website. Mogelijk is de service tijdelijk niet beschikbaar of heeft u op deze locatie onvoldoende bereik...</string>
+	<string name="no_conn_refresh">Vernieuwen</string>
+	
+	<string name="wifi_noconn">Geen verbinding</string>
+	<string name="wifi_text">Het toestel kon niet verbinden met de website ondanks dat WiFi en 3G zijn ingeschakeld. U bent mogelijk verbonden met een netwerk dat u geen toegang geeft tot het internet. Schakel WiFi uit en probeer het opnieuw.</string>
+	<string name="wifi_settings">WiFi instellingen</string>
+	<string name="wifi_retry">Opnieuw proberen</string>
+	
+	<string name="safe_zone">Veilige zone</string>
+	<string name="danger_zone">Gevarenzone</string>
+	
+	<string name="network_conn">Verbinding</string>
+	<string name="network_text">Het toestel probeert verbinding te maken met de Viamigo database.</string>
+	<string name="network_retry">Opnieuw proberen</string>
+	<string name="network_cancel">Annuleren</string>
+	<string name="network_flymode_active">Vliegmodus is geactiveerd op uw toestel. Gelieve het uit te schakelen om de app te gebruiken.</string>
+	<string name="network_data_disabled">Dataverbinding is uitgeschakeld op uw toestel. Gelieve deze in te schakelen om de app te gebruiken.</string>
+	<string name="network_wifi_disabled">Wifi is uitgeschakeld op uw toestel. Wilt u deze inschakelen?</string>
+	
+	<string name="settings_go_flymode">Uitschakelen via Instellingen</string>
+	<string name="settings_go_wifi">Inschakelen via Instellingen</string>
+	<string name="settings_go_data">Inschakelen via Instellingen</string>
+	
+	<string name="login_login">Aanmelden</string>
+	<string name="login_cancel">Annuleren</string>
+	<string name="login_text">Gelieve uw telefoonnummer en pin in te geven om aan te melden.</string>
+	<string name="login_pin">PIN</string>
+	<string name="login_phone_nr">Telefoonnummer</string>
+	<string name="login_wrong_password">PIN is niet correct</string>
+	
+	<string name="users">Gebruikers</string>
+	<string name="users_confirm">Bevestigen</string>
+	<string name="users_text">Kies de gebruiker waaraan u dit toestel wilt koppelen. U kan dit ten allen tijde veranderen.</string>
+	<string name="users_organisation">Organisatie</string>
+	
+	<string name="paths">Paden</string>
+	<string name="paths_refresh">Vernieuwen</string>
+	<string name="paths_no_paths">Er werden geen paden gevonden</string>
+	<string name="paths_activate">Start</string>
+	
+	<string name="user_leaving_wait">Even wachten</string>
+	<string name="user_leaving_dont_go">Nog niet vertrekken!</string>
+	<string name="user_leaving_back">Terug</string>
+	<string name="user_leaving_no_coach">Er kon geen coach gevonden worden. U mag NIET vertrekken.</string>
+	<string name="user_leaving_error">Er trad een fout op. U mag NIET vertrekken.</string>
+	
+	<string name="path_active_ok">OK!</string>
+	<string name="path_active_stop">STOP!</string>
+	<string name="path_active_leave">Je mag vertrekken</string>
+	<string name="path_active_terminate">Weet u zeker dat u het actieve pad wil afsluiten?</string>
+	<string name="path_active_terminated">Het actieve pad wordt afgesloten</string>
+	
+	<string name="path_ended_arrived">Aangekomen</string>
+	
+	<string name="path_killed">Pad afgesloten</string>
+	
+	<string name="error_error">Error</string>
+	<string name="error_occured">Er trad een fout op. Gebruik de knop om een verslag naar het development team te sturen.</string>
+	<string name="error_send">Versturen</string>
+	
+	<string name="update">Updaten</string>
+	<string name="update_available">Update beschikbaar</string>
+	<string name="update_text">Er is een update beschikbaar. Wilt u deze nu downloaden?</string>
+	<string name="update_text_man">Er is een nieuwe versie beschikbaar. U moet deze installeren om Viamigo verder te kunnen gebruiken.</string>
+	<string name="update_cancel">Annuleren</string>
+	
+	<string name="request_coach_find">Coach gezocht</string>
+	<string name="request_coach_text">Is er iemand die je kent waaraan je hulp kan vragen?</string>
+	
+	
+	<string name="sms_wants_coach">%1$s wilt vertrekken met pad %2$s --- Gelieve \'vpad:coach\' terug te sturen om contactpersoon te zijn.</string>
+	<string name="sms_will_coach">stemde toe om begeleider te zijn van</string>
+	<string name="sms_you_are_coach">U bent verantwoordelijk voor</string>
+	<string name="sms_nth_coach">U bent de %1$se begeleider van %2$s. U zal nu ook berichten ontvangen voor deze verplaatsing.</string>
+	<string name="sms_coach_found">Er werd een coach gevonden voor</string>	
+	
+	<string name="alert_near_address">ter hoogte van adres</string>
+	<string name="alert_location_found">Locatie gevonden</string>
+	<string name="alert_address">Adres</string>
+	<string name="alert_address_coordinates">Geef "%s" in google maps in.</string>
+	<string name="alert_gps_init">GPS is klaar met initialiseren</string>
+	<string name="alert_gps_no_conn">GPS kon geen verbinding maken</string>
+	<string name="alert_service_start">De padservice werd gestart voor</string>
+	<string name="alert_service_stopped">De padservice werd afgesloten voor</string>
+	
+	<string name="alert_user_arrived">is aangekomen op de bestemming. Viamigo blijft nog gedurende 10 minuten actief.</string>
+	<string name="alert_user_left_destination">verlaat opnieuw de eindbestemming</string>
+	<string name="alert_user_at_location">bevindt zich op locatie:</string>
+	<string name="alert_user_leaving_location">verlaat locatie:</string>
+	
+	<string name="alert_geocoded_user_at_waypoint">bevindt zich op waypoint _address_</string>
+	<string name="alert_geocoded_user_leaving_waypoint">verlaat waypoint _address_</string>
+	<string name="alert_geocoded_user_abnormal_speed">heeft een abnormale snelheid.</string>
+	<string name="alert_geocoded_user_normal_speed">heeft terug een normale snelheid _address_</string>
+	<string name="alert_geocoded_speed_walk">Op wandeltraject werd %.2f km/h gemeten _address_</string>
+	<string name="alert_geocoded_speed_bike">Op fietstraject werd %.2f km/h gemeten _address_</string>
+	<string name="alert_geocoded_speed_bus">Op traject werd %.2f km/h gemeten _address_</string>
+	<string name="alert_geocoded_user_standing_still">staat te lang stil _address_</string>
+	<string name="alert_geocoded_user_moving">is opnieuw in beweging _address_</string>
+	<string name="alert_geocoded_user_off_path">wijkt te ver van het pad af _address_ (%1$sm)</string>
+	<string name="alert_geocoded_user_on_path">bevindt zich opnieuw op het pad _address_</string>
+	<string name="alert_geocoded_user_entered_safe_zone">begeeft zich in een veilige zone _address_</string>
+	<string name="alert_geocoded_user_left_safe_zone">verlaat de veilige zone _address_</string>
+	<string name="alert_geocoded_user_entered_danger_zone">begeeft zich in een gevarenzone _address_</string>
+	<string name="alert_geocoded_user_left_danger_zone">verlaat de gevarenzone _address_</string>
+	
+	<string name="alert_past_user_standing_still">stond te lang stil</string>
+	<string name="alert_past_user_moving">was opnieuw in beweging</string>
+	<string name="alert_past_user_abnormal_speed">had een abnormale snelheid</string>
+	<string name="alert_past_user_normal_speed">had opnieuw een normale snelheid</string>
+	<string name="alert_past_user_off_path">ging te ver van het pad</string>
+	<string name="alert_past_user_on_path">kwam terug op het pad</string>
+	<string name="alert_past_user_entered_danger_zone">begaf zich in een gevarenzone</string>
+	<string name="alert_past_user_left_danger_zone">verliet de gevarenzone</string>
+	
+	<string name="alert_but">maar</string>
+	<string name="alert_and_now_also">en</string>
+	
+	<string name="toast_service_start">De padservice werd gestart</string>
+	<string name="toast_gps_ready">GPS is klaar</string>
+	
+	<string name="basic_ok">OK</string>
+	<string name="basic_yes">Ja</string>
+	<string name="basic_no">Nee</string>
+	<string name="basic_cancel">Annuleren</string>
+	<string name="basic_wait">Even wachten&#x2026;</string>
+
+	<string name="loading_paths">Paden opvragen&#x2026;</string>
+	<string name="loading_user">Gebruiker laden&#x2026;</string>
+	<string name="loading_active_transport">Actieve verplaatsing laden&#x2026;</string>
+	<string name="finding_location">Locatie bepalen&#x2026;</string>
+	<string name="checking_updates">Controleren op updates&#x2026;</string>
+	<string name="logging_in">Aanmelden&#x2026;</string>
+	<string name="wait_for_connection">Wachten op dataverbinding&#x2026;</string>
+	<string name="checking_for_active_path">Controleren op actief pad&#x2026;</string>
+	<string name="linking_user">Gebruiker koppelen&#x2026;</string>
+</resources>

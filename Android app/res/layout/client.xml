@@ -1,0 +1,81 @@
+<LinearLayout
+   	xmlns:android="http://schemas.android.com/apk/res/android"
+   	xmlns:tools="http://schemas.android.com/tools"    
+   	tools:context="be.kpoint.pictochat.app.activities.AbstractClientChatActivity"
+   	android:id="@+id/client_lytMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="0"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/client_lstMessages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    android:paddingBottom="@dimen/activity_vertical_margin" />
+
+    <ImageView
+        android:id="@+id/client_imgEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hand_touch_icon" />
+
+    <LinearLayout
+        android:id="@+id/client_lytDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/able_main_color"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/client_imgChevron"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_expand_less_white_48dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/client_lytControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@color/gray"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    android:paddingBottom="@dimen/activity_vertical_margin" >
+
+        <org.apmem.tools.layouts.FlowLayout
+            android:id="@+id/client_lytMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:orientation="horizontal" >
+        </org.apmem.tools.layouts.FlowLayout>
+
+        <Button
+            android:id="@+id/client_btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/client_send" />
+
+        <be.kpoint.pictochat.util.SnappedHorizontalScrollView
+            android:id="@+id/client_hsvColumns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </be.kpoint.pictochat.util.SnappedHorizontalScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

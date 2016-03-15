@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Activities.RoomsActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:minHeight="10dp"
+        android:minWidth="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rooms"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical" >
+
+            <be.kpoint.pictochat.util.SnappedHorizontalScrollView
+                android:id="@+id/rooms_hsvRooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.8"
+                android:minHeight="25px"
+                android:minWidth="25px" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2" >
+
+                <Button
+                    android:id="@+id/rooms_btnPrevious"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:background="#3d3d3d"
+                    android:text="&lt;" />
+
+                <TextView
+                    android:id="@+id/rooms_txtRoomInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/rooms_btnNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:background="#3d3d3d"
+                    android:text=">" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rooms_txtNoRooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/rooms_no_rooms"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.2" >
+
+                <Button
+                    android:id="@+id/rooms_btnRefresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.4"
+                    android:background="#3d3d3d"
+                    android:text="@string/rooms_refresh" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" >
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/rooms_btnOpen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.4"
+                    android:background="#8e4ca8"
+                    android:text="@string/rooms_open"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/c_progress" />
+
+</FrameLayout>

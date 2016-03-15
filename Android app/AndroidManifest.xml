@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="be.kpoint.pictochat.app"
+    android:versionCode="7"
+    android:versionName="0.7" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.wifi" />
+
+    <application
+        android:name="be.kpoint.pictochat.App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ModeActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activities.AddUserActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activities.RoomsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".activities.ClientListActivity"
+            android:label="@string/app_name" >
+        </activity>  
+        <activity
+            android:name=".activities.ChatWithClientActivity"
+            android:label="@string/app_name" >
+        </activity>            
+        <activity
+            android:name=".activities.ChatWithCoachesActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".activities.ChatWithFriendActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".activities.AbstractClientChatActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".activities.ErrorActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">            
+        </activity>		
+        
+        <service
+            android:name="be.kpoint.pictochat.comm.pubnub.PubnubService"
+            android:label="AbleChat PubnubService" />      
+        <service 
+            android:name="be.kpoint.pictochat.network.services.HttpGetService" 
+            android:label="AbleChat HttpGetService" />
+        <service 
+            android:name="be.kpoint.pictochat.network.services.HttpPostService" 
+            android:label="AbleChat HttpPostService" />
+    </application>
+
+</manifest>

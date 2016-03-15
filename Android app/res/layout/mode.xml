@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="be.kpoint.pictochat.app.activities.ModeActivity" >
+
+    <TextView
+        android:id="@+id/mode_lblSelectUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/mode_select_user"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RadioGroup
+        android:id="@+id/mode_radGrpUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mode_lblSelectUser"
+        android:layout_alignStart="@+id/mode_lblSelectUser"
+        android:layout_below="@+id/mode_lblSelectUser" >
+
+        <RadioButton
+            android:id="@+id/mode_radClient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/mode_client" />
+
+        <RadioButton
+            android:id="@+id/mode_radCoach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mode_coach" />
+    </RadioGroup>
+    
+    <LinearLayout
+        android:id="@+id/mode_lytClientInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mode_radGrpUser"
+        android:layout_alignStart="@+id/mode_radGrpUser"
+        android:layout_below="@+id/mode_radGrpUser"
+        android:orientation="vertical" 
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp" >        
+        
+        <TextView
+	        android:id="@+id/mode_lblClients"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginTop="20dp"
+	        android:text="@string/mode_clients"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        <Spinner
+            android:id="@+id/mode_lstClients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+      
+    <Button
+        android:id="@+id/mode_btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/mode_ok" />
+
+</RelativeLayout>
