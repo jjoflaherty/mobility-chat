@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exceptions_">No hay conexión</string>
+    
+    <string name="exceptions_slow_conn">Parece que usted está usando una conexión lenta. Espere, por favor...</string>
+    <string name="exceptions_conn_failed">La conexión no se pudo realizar</string>
+    <string name="exceptions_server_error">El servidor devolvió una respuesta inválida\n%1$s: %2$s</string>
+    <string name="exceptions_timeout">La petición ha tardado mucho tiempo y ha sido cancelada</string>
+</resources>
