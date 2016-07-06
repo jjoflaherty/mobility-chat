@@ -21,14 +21,23 @@ public class ButtonParser
 
 
 	public static Button parse(JSONObject jsonObject) throws JSONException {
-		Long id = jsonObject.getLong(JSON_ID_TAG);
-		String color = jsonObject.getString(JSON_COLOR_TAG);
-		String icon = jsonObject.getString(JSON_ICON_TAG);
-		String action = jsonObject.getString(JSON_ACTION_TAG);
+		Button button;
 		String url = jsonObject.getString(JSON_URL_TAG);
-		Integer cell = jsonObject.getInt(JSON_CELL_TAG);
 
-		Button button = Button.create(id, color, icon, action, url, cell);
+		if (!jsonObject.isNull(JSON_ID_TAG)) {
+			Long id = jsonObject.getLong(JSON_ID_TAG);
+			String color = jsonObject.getString(JSON_COLOR_TAG);
+			String icon = jsonObject.getString(JSON_ICON_TAG);
+			String action = jsonObject.getString(JSON_ACTION_TAG);
+			Integer cell = jsonObject.getInt(JSON_CELL_TAG);
+
+			button = Button.create(id, color, icon, action, url, cell);
+		}
+		else {
+			String text = jsonObject.optString(JSON_TEXT_TAG);
+
+			button = Button.create(text, url);
+		}
 
 		if (!jsonObject.isNull(JSON_TEXT_TAG))
 			button.setText(jsonObject.getString(JSON_TEXT_TAG));

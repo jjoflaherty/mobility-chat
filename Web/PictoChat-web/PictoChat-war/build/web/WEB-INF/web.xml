@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>AvatarServlet</servlet-name>
+        <servlet-class>pictochat.client.web.service.AvatarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AvatarServlet</servlet-name>
+        <url-pattern>/avatar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ButtonImageServlet</servlet-name>
+        <servlet-class>pictochat.client.web.service.ButtonImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ButtonImageServlet</servlet-name>
+        <url-pattern>/images</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ActivationServlet</servlet-name>
+        <servlet-class>pictochat.client.web.service.ActivationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivationServlet</servlet-name>
+        <url-pattern>/account/activate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ActivateInvitationServlet</servlet-name>
+        <servlet-class>pictochat.client.web.service.ActivateInvitationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivateInvitationServlet</servlet-name>
+        <url-pattern>/invite/activate</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>Resteasy</servlet-name>
+        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Resteasy</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+
+    <context-param>
+        <param-name>resteasy.servlet.mapping.prefix</param-name>
+        <param-value>/api</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.jndi.resources</param-name>
+        <param-value>
+            PictoChat/ClientRest/remote,
+            PictoChat/CoachRest/remote,
+            PictoChat/ContactRest/remote
+        </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.ajax4jsf.xmlparser.ORDER</param-name>
+        <param-value>NONE</param-value>
+    </context-param>
+
+    <!-- Skins -->
+    <context-param>
+        <param-name>org.richfaces.CONTROL_SKINNING_CLASSES</param-name>
+        <param-value>disable</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.richfaces.CONTROL_SKINNING</param-name>
+        <param-value>disable</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.richfaces.SKIN</param-name>
+        <param-value>plain</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>
+            /WEB-INF/faces-config-bundles.xml,
+            /WEB-INF/faces-config-navigation.xml,
+
+            /WEB-INF/faces-config.xml,
+            /WEB-INF/faces-config-locale.xml,
+
+            /WEB-INF/faces-config-main.xml,
+            /WEB-INF/faces-config-client.xml,
+            /WEB-INF/faces-config-user.xml,
+            /WEB-INF/faces-config-page.xml
+        </param-value>
+    </context-param>
+    <filter>
+        <display-name>RichFaces Filter</display-name>
+        <filter-name>richfaces</filter-name>
+        <filter-class>org.ajax4jsf.Filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>richfaces</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>
+            60
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

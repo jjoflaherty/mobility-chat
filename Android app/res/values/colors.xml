@@ -5,6 +5,7 @@
     <color name="able_main_color">#9900bb</color>
     <color name="received_message_background">#ffffcc</color>
     <color name="sent_message_background">#99ccff</color>
+    <color name="unread_message_background">#66ff66</color>
     <color name="white">#ffffff</color>
     
 </resources>

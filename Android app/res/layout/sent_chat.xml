@@ -3,20 +3,33 @@
     android:layout_height="wrap_content"
     android:background="@color/sent_message_background"
     android:gravity="end"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
+    <ImageView
+        android:id="@+id/sentChat_imgAvatar"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:paddingEnd="15dp"
+        android:paddingRight="15dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_person_pin_black_48dp" />
+    
     <org.apmem.tools.layouts.FlowLayout
         android:id="@+id/sentChat_lytPictos"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
         android:orientation="horizontal" >
 
     </org.apmem.tools.layouts.FlowLayout>
-    
-    <TextView 
-        android:id="@+id/sentChat_lblText" 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-		android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<ImageView
+	    android:id="@+id/sentChat_imgRead"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:adjustViewBounds="true"
+	    android:maxWidth="75dp" />
 
 </LinearLayout>

@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>nl</supported-locale>
+        </locale-config>
+
+        <!-- Header -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.header.header</base-name>
+            <var>rbMenu</var>
+        </resource-bundle>
+
+        <!-- Landing page -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.landing.landing</base-name>
+            <var>rbLanding</var>
+        </resource-bundle>
+
+        <!-- Activation page -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.activation.activation</base-name>
+            <var>rbActivation</var>
+        </resource-bundle>
+
+        <!-- Forms -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.login.login</base-name>
+            <var>rbLogin</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.register.register</base-name>
+            <var>rbRegister</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.password.password</base-name>
+            <var>rbPassword</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.profile.profile</base-name>
+            <var>rbProfile</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.client.create</base-name>
+            <var>rbClientCreate</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.client.edit</base-name>
+            <var>rbClientEdit</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.network.invite</base-name>
+            <var>rbNetworkInvite</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.network.admin</base-name>
+            <var>rbNetworkAdmin</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.friends.admin</base-name>
+            <var>rbFriendsAdmin</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.page.create</base-name>
+            <var>rbPageCreate</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.page.edit</base-name>
+            <var>rbPageEdit</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.page.admin</base-name>
+            <var>rbPageAdmin</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.page.detail</base-name>
+            <var>rbPageDetail</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.forms.page.buttons.edit</base-name>
+            <var>rbButtonsEdit</var>
+        </resource-bundle>
+
+        <!-- Form messages -->
+
+        <!-- Components -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.components.upload.upload</base-name>
+            <var>rbRichUpload</var>
+        </resource-bundle>
+
+        <!-- Enums -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.enums.icon</base-name>
+            <var>rbIcon</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.enums.action</base-name>
+            <var>rbAction</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.enums.role</base-name>
+            <var>rbRole</var>
+        </resource-bundle>
+
+        <!-- Content -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.dashboard.dashboard</base-name>
+            <var>rbDashboard</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.manual</base-name>
+            <var>rbManual</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.app.app</base-name>
+            <var>rbApp</var>
+        </resource-bundle>
+
+        <!-- Manual -->
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.main</base-name>
+            <var>rbManualMain</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.app</base-name>
+            <var>rbManualApp</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.requirements</base-name>
+            <var>rbManualRequirements</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.register</base-name>
+            <var>rbManualRegister</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.clients</base-name>
+            <var>rbManualClients</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>pictochat.client.web.bundles.content.manual.pages</base-name>
+            <var>rbManualPages</var>
+        </resource-bundle>
+
+
+    </application>
+</faces-config>
+

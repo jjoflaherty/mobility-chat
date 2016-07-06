@@ -3,6 +3,7 @@ package be.kpoint.pictochat.comm.pubnub;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Notification;
@@ -32,6 +33,7 @@ import com.pubnub.api.PubnubError;
 import com.pubnub.api.PubnubException;
 
 import be.kpoint.pictochat.App;
+import be.kpoint.pictochat.app.Constants;
 import be.kpoint.pictochat.app.R;
 import be.kpoint.pictochat.util.WeakReferenceHandler;
 
@@ -44,10 +46,11 @@ public class PubnubService extends Service
 	public static final int MSG_SEND_JSON = 12;
 	public static final int MSG_SEND_STRING = 13;
 	public static final int MSG_HISTORY = 14;
-	public static final int MSG_HERENOW = 15;
-	public static final int MSG_PRESENCE = 16;
-	public static final int MSG_SETSTATE = 17;
-	public static final int MSG_GETSTATE = 18;
+	public static final int MSG_HISTORY_SINCE = 15;
+	public static final int MSG_HERENOW = 16;
+	public static final int MSG_PRESENCE = 17;
+	public static final int MSG_SETSTATE = 18;
+	public static final int MSG_GETSTATE = 19;
 	public static final int MSG_HISTORY_RECEIVED = 30;
 	public static final int MSG_HERENOW_RECEIVED = 31;
 	public static final int MSG_PRESENCE_RECEIVED = 32;
@@ -61,8 +64,7 @@ public class PubnubService extends Service
 	public static final String BUNDLE_UUID = "uuid";
 	public static final String BUNDLE_STATE = "state";
 	public static final String BUNDLE_AMOUNT = "amount";
-
-	//public static final String MESSAGE_INTENT = "pubnub.service.message"; //TODO Remove this if testing shows no problems
+	public static final String BUNDLE_TIME = "time";
 
 
 	private List<IPubnubMessageReceivedListener> pubnubMessageReceivedListeners = new ArrayList<IPubnubMessageReceivedListener>();
@@ -140,15 +142,15 @@ public class PubnubService extends Service
 			    new Intent(),
 			    PendingIntent.FLAG_UPDATE_CURRENT);
 		Notification note = new NotificationCompat.Builder(this)
-			.setContentTitle("Pubnub")
-		    .setContentText("AbleChat started Pubnub service")
+			.setContentTitle(getResources().getString(R.string.pubnub_title_notification))
+		    .setContentText(getResources().getString(R.string.pubnub_service_started_notification))
 		    .setSmallIcon(R.drawable.note)
 		    .setContentIntent(contentIntent)
 			.build();
 
-		startForeground(334, note);
+		startForeground(Constants.PubnubServiceNotificationId, note);
 
-		return START_STICKY;
+		return START_REDELIVER_INTENT;
 	}
 	@Override
 	public IBinder onBind(Intent intent)
@@ -256,6 +258,12 @@ public class PubnubService extends Service
 	public void history(PubnubChannel channel, int amount) {
 		this.pubnub.history(channel.toString(), -1, -1, amount, false, true, this.historyCallback);
 	}
+	public void history(PubnubChannel channel, Date start) {
+		if (start != null)
+			this.pubnub.history(channel.toString(), -1, start.getTime() * 10000, 10, false, true, this.historyCallback);
+		else
+			history(channel, 10);
+	}
 	public void setState(PubnubChannel channel, JSONObject state) {
 		this.pubnub.setState(channel.toString(), this.pubnub.getUUID(), state, this.setStateCallback);
 	}
@@ -330,11 +338,6 @@ public class PubnubService extends Service
 			msg.what = PubnubService.MSG_MESSAGE_RECEIVED;
 			msg.setData(data);
 			PubnubService.this.messageHandler.sendMessage(msg);
-
-			/* TODO Remove this if testing shows no problems
-			Intent pubnubMessageIntent = new Intent(MESSAGE_INTENT);
-			pubnubMessageIntent.putExtras(data);
-			PubnubService.this.sendBroadcast(pubnubMessageIntent);*/
 		}
 	};
 	private Callback hereNowCallback = new Callback() {
@@ -491,6 +494,12 @@ public class PubnubService extends Service
 					service.history(
 						(PubnubChannel)msg.getData().getSerializable(PubnubService.BUNDLE_CHANNEL),
 						msg.getData().getInt(BUNDLE_AMOUNT, 5));
+					break;
+
+				case MSG_HISTORY_SINCE:
+					service.history(
+						(PubnubChannel)msg.getData().getSerializable(PubnubService.BUNDLE_CHANNEL),
+						(Date)msg.getData().getSerializable(BUNDLE_TIME));
 					break;
 
 				case MSG_HERENOW:

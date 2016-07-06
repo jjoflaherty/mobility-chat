@@ -2,7 +2,7 @@
 <resources>
     <string name="exceptions_">No connection</string>
     
-    <string name="exceptions_slow_conn">Even geduld... U gebruikt een trage verbinding</string>
+    <string name="exceptions_slow_conn">Even geduld&#x2026; U gebruikt een trage verbinding</string>
     <string name="exceptions_conn_failed">Er kon geen verbinding worden gemaakt</string>
     <string name="exceptions_server_error">De server gaf een ongeldig antwoord\n%1$s: %2$s</string>
     <string name="exceptions_timeout">Het maken van de verbinding duurde te lang en werd beëindigd</string>

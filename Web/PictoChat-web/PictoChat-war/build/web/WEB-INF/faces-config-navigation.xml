@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <!-- Main navigation rules -->
+    <navigation-rule>
+        <!-- Main navigation -->
+        <navigation-case>
+            <from-outcome>showMain</from-outcome>
+            <to-view-id>/main.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>showDashboard</from-outcome>
+            <to-view-id>/secure/dashboard.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <!-- Client navigation -->
+        <navigation-case>
+            <from-outcome>createClient</from-outcome>
+            <to-view-id>/secure/client/create.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editClient</from-outcome>
+            <to-view-id>/secure/client/edit.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>adminCoaches</from-outcome>
+            <to-view-id>/secure/client/coaches/admin.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inviteCoaches</from-outcome>
+            <to-view-id>/secure/client/coaches/invite.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <!-- User navigation -->
+        <navigation-case>
+            <from-outcome>editUser</from-outcome>
+            <to-view-id>/secure/user/edit.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <!-- User navigation -->
+        <navigation-case>
+            <from-outcome>adminFriends</from-outcome>
+            <to-view-id>/secure/friends/admin.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <!-- Page navigation -->
+        <navigation-case>
+            <from-outcome>adminPage</from-outcome>
+            <to-view-id>/secure/page/admin.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editPage</from-outcome>
+            <to-view-id>/secure/page/edit.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editPageButtons</from-outcome>
+            <to-view-id>/secure/page/buttons/edit.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <!-- Organisation navigation -->
+        <navigation-case>
+            <from-outcome>showOrganisation</from-outcome>
+            <to-view-id>/secure/organisation/active/show.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>adminOrganisation</from-outcome>
+            <to-view-id>/organisation/admin.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createOrganisation</from-outcome>
+            <to-view-id>/organisation/create.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>joinOrganisation</from-outcome>
+            <to-view-id>/secure/organisation/join.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inviteMembers</from-outcome>
+            <to-view-id>/secure/organisation/invite.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <!-- Member navigation -->
+        <navigation-case>
+            <from-outcome>adminMember</from-outcome>
+            <to-view-id>/member/admin.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>showLogin</from-outcome>
+            <to-view-id>/login/login.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>showRegister</from-outcome>
+            <to-view-id>/login/register.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>showPassword</from-outcome>
+            <to-view-id>/secure/user/password.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
+

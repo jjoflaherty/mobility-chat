@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <!-- Edit User handler -->
+    <managed-bean id="editUserHandler">
+        <managed-bean-name>editUserHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.user.EditUserHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>userDAO</property-name>
+            <value>#{ejbHandler.userDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>avatarDAO</property-name>
+            <value>#{ejbHandler.avatarDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>sessionHandler</property-name>
+            <value>#{sessionHandler}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>userIdFromSession</property-name>
+            <value>#{sessionScope.userId}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>
+

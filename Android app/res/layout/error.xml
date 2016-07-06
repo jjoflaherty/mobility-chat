@@ -34,9 +34,9 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageView
-            android:id="@+id/userItem_imgPresence"
+            android:id="@+id/roomItem_imgAvatar"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="0dp"
             android:layout_weight="0.8"
             android:src="@drawable/caution" />
 

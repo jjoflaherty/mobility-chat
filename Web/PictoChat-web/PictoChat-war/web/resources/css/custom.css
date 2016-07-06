@@ -1,0 +1,264 @@
+﻿/* -----------------------------------------------------------------------------
+
+    This file is used to add your own CSS definitions.
+	Don't forget to link this CSS to all your HTML files (uncomment it in HEAD tag).
+
+----------------------------------------------------------------------------- */
+
+	/* your CSS here */
+        .page-button { border: 5px solid black; border-radius: 10px; padding-bottom: 75%; background-position: center; background-size: contain; background-repeat: no-repeat; }
+        .page-button.selected { border: 5px solid #2b8be9; }
+
+
+
+        form.navigation { margin-top: 0px; }
+        div.page-header-inner form { margin-top: 0px; }
+
+        nav.page-header-nav li { margin-right: 2px; }
+
+        table.compact:not(.mceToolbar) td { padding: 2px 4px; border: none; }
+        .default-form table td { vertical-align: top; }
+        .default-form table td h1, .default-form table td h2, .default-form table td h3, .default-form table td h4, .default-form table td h5 { margin-top: 0px; }
+        table td.fit-content { width: 1%; }
+        table td.fill-table { width: 100%; }
+        .default-form input.small-numeric { width: 50px; text-align: center;}
+        .default-form .richfacesSkin table.mceLayout { border: 1px solid #e6e6e6; border-radius: 7px; }
+        .default-form .alert-message { display: block; margin: 0 0 10px; }
+        .default-form .alert-message.nowrap { white-space: nowrap; }
+
+        .row > form.default-form { margin-top: 0px; }
+
+        .form-section { border: solid 2px #1d1d1d; }
+        .form-section form { padding: 15px; }
+        .form-section > header { padding: 5px 0px 15px 5px; }
+        .form-section header { padding-left: 5px; }
+        .form-section .ct-u-backgroundMotive { background-color: #1d1d1d; }
+
+        .hide-radios input[type="radio"] { visibility: hidden; }
+        .hide-radios .select-radios label { font-size: 1.7em; cursor: pointer; }
+        .hide-radios .select-radios input[type="radio"]:not(:checked):not(:hover) + label span { color: gray; }
+
+        .hide-radios.tri-state input[type="radio"] { display: none; visibility: hidden; }
+        .hide-radios.tri-state input[type="radio"]:not(:checked) + label { display: none; }
+        .hide-radios.tri-state label { font-size: 2em; cursor: pointer; }
+        .hide-radios.tri-state label span.unset { color: gray; }
+        .hide-radios.tri-state label span.yes { color: red; }
+        .hide-radios.tri-state label span.no { color: lime; }
+
+        table input[type="radio"],
+        table input[type="checkbox"] {
+            margin: 3px 3px 0 5px;
+        }
+        table.select-radios { margin: 0 auto; }
+
+        .sub-menu .property-thumb { width: 25%; float: left; margin-right: 10px; border-radius: 7px; }
+        .property-info .property-thumb { border-radius: 7px; }
+
+        .hidden-button {
+            visibility: hidden;
+            width: 0; height: 0;
+            padding: 0; margin: 0;
+            border: 0;
+        }
+
+        .manual-image {
+            padding: 20px;
+            border: 1px solid #d3d3d3;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            color: #222222;
+            width: 40%;
+        }
+        .manual-image.small {
+            width: 20%;
+        }
+        .manual-image.left {
+            float: left;
+            margin-right: 20px;
+        }
+        .manual-image.left.clear {
+            clear: left;
+        }
+        .manual-image.right {
+            float: right;
+            margin-left: 20px;
+        }
+        .manual-image.right.clear {
+            clear: right;
+        }
+        .manual-image:hover {
+            background-color: #bbbbbb;
+        }
+        .manual-image.small:hover {
+            width: 50%;
+        }
+
+        form.close-button { float: right; padding: 0; }
+
+        .gmap-canvas { width: 100%; height: 400px; }
+
+        .high-risk { color: #d9534f; }
+        .medium-risk { color: #fe9a42; }
+        .low-risk { color: #00c680; }
+        .unknown-risk { color: #cccccc; }
+        .fa-inverse-bg { color: #282828; }
+
+        .draggable, .dragged td.drgind_text { border: 0 none; cursor: move; display: inline-block; padding: 10px 15px 9px; background-color: #f1155a; box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset; color: #fff; }
+        .draggable, dragged { border-radius: 7px; }
+        .draggable { width: 100% }
+
+        .drag-target { margin: 10px; width: 225px; text-align: center; background-color: #423338; border-radius: 7px; box-shadow: 0 2px 0 #e6e6e6; }
+        .drag-target .drag-target-content { padding: 24px 20px 17px; }
+        .drag-target .drag-target-content * { color: white; }
+
+        .drop-zone { position: relative; top: 7px; margin: 0 5px; background-color: white; border-radius: 7px; border: 0 none; }
+        .drop-zone table, .draggables-source table, .dragged td { padding: 0px;  margin: 0px; border: 0 none; }
+        .drop-zone table td, .draggables-source table td { padding: 2px;  margin: 0px; border: 0 none; }
+        .drop-zone div { padding: 2px; min-height: 30px; }
+
+        .sphere > div { padding-bottom: 100%; }
+        .sphere-1 { border-radius: 50%; position: absolute; left: 40%; top: -15%; width: 40%; opacity: 0.7; }
+        .sphere-2 { border-radius: 50%; position: absolute; left: 60%; top: 20%; width: 45%; opacity: 0.7; }
+
+        .red-flag a, .red-flag label, .red-flag span { color: red; }
+        .green-flag a, .green-flag label, .green-flag span { color: #00c680; }
+        .header-icon { display: inline-block; padding: 0 8px; }
+        .header-message-counter { display: inline-block; padding: 0 8px; font-size: 0.75em; position: relative; left: -25%; top: 8px;}
+
+        .category-questions {}
+        .question-row {}
+        .question-row:nth-child(2n) { background-color: #303030; }
+
+        .request-thread-container { padding: 0 0 50px 100px; border-left: 1px solid #e6e6e6; }
+
+
+        .sidebar .sidebar-title {
+            background-color: #2baddf; color: #fff;
+            margin: 0; height: 100px; line-height: 100px; text-align: center; font-size: 1.5em; border-radius: 7px 0 0 0; }
+        .sidebar .sidebar-content { padding: 30px; }
+
+
+        .viewport-image { position: relative; background-size: 100% 100%; }
+        .viewport-image .page-header { position: absolute; bottom: 0; width: 100%; }
+        .viewport-image .overlay { color: #423338; position: absolute; border-radius: 10px; padding: 20px; background-color: rgba(255,255,255,0.0); }
+        .viewport-image .h1 { margin: 0; }
+
+        .user-avatar { display: block; position: relative; float: left; max-width: 100%; }
+	.user-avatar img { display: block; border-radius: 5px; }
+	.user-avatar .name {
+            background-color: rgba(66, 51, 56, 0.9); color: #fff;
+            position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 10px 8px 38px; border-radius: 0 0 5px 5px; font-size: 0.875em; }
+	.user-avatar .name i {
+            background: url( '../../resources/img/icons.png' ) 0 0 no-repeat;
+            display: block; position: absolute; top: 4px; left: 10px; width: 22px; height: 22px; }
+        .user-avatar .name i.ico-family { background-position: -34px -34px; }
+	.user-avatar .name i.ico-person { background-position: -94px -34px; }
+
+        .property-thumb { border-radius: 7px; }
+
+        .wizard-container .wizard-steps { display: table; table-layout: fixed; width: 100%; border-top: 10px solid #dddddd; }
+        .wizard-container .wizard-content { margin: 50px 10% 0 10%; border: 2px solid #2baddf; padding: 20px; border-radius: 10px; box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset; }
+        .wizard-container .wizard-content h3 { margin-top: 0; }
+        .wizard-container .wizard-step { display: table-cell; text-align: center; }
+        .wizard-container .wizard-step:before { content: ""; }
+        .wizard-container .wizard-step.active {}
+        .wizard-container .wizard-step .wizard-step-label { background-color: #252b7b; color: #fff; border-radius: 50%; padding: 0 8px; position: absolute; left: 50%; top: -17px; }
+        .wizard-container .wizard-step.active .wizard-step-label { background-color: #2baddf; }
+
+        .wizard-container .toggle-title { position: relative; margin: 0 0 10px 0; padding: 10px 30px 10px 10px; font-size: 1.125em; cursor: pointer; color: white; background-color: #2baddf; border-radius: 10px; }
+	.wizard-container .toggle-title:after { display: block; position: absolute; top: 14px; right: 7px; font-size: 14px;
+		font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; content: "\f077"; }
+	.wizard-container .toggle-content { padding-bottom: 10px; }
+	.wizard-container .toggle-content > *:first-child { margin-top: 0; }
+	.wizard-container .closed .toggle-title:after { content: "\f078"; }
+
+
+        /* Fix Richfaces FileUpload */
+        /*table.rich-fileupload-toolbar-decor { margin: 0px; padding: 2px; border: none; border-bottom: 1px solid #e6e6e6; }
+        table.rich-fileupload-toolbar-decor td { background-color: #423338; padding: 0px; }
+        table .rich-fileupload-button {
+            background-color: #f1155a;
+            box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
+            color: #fff;
+            border: 0 none;
+            border-radius: 7px;
+            cursor: pointer;
+            padding: 2px;
+            position: relative;
+            top: 0;
+        }
+        table .rich-fileupload-button-light {
+            background-color: #FFF;
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3);
+            color: #f1155a;
+            border: 0 none;
+            border-radius: 7px;
+            cursor: pointer;
+            padding: 2px;
+            position: relative;
+            top: 0;
+
+            -moz-box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3);
+            -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        table .rich-fileupload-button-border {
+            border: none;
+            margin: 5px;
+        }
+        .rich-fileupload-list-overflow {
+            padding-bottom: 20%;
+        }*/
+
+        /* Fix Richfaces Draggable */
+        .drag-indicator td { padding: 3px; }
+        .drag-target { }
+
+/* -----------------------------------------------------------------------------
+
+    RESPONSIVE DEFINITIONS
+
+----------------------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------------------
+        LARGE DEVICES
+		devices with width between 992px and 1199px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 1199px ) {
+
+        /* your CSS here */
+
+    }
+
+    /* -------------------------------------------------------------------------
+        MEDIUM DEVICES
+		devices with width between 768px and 991px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 991px ) {
+
+        /* your CSS here */
+
+    }
+
+    /* -------------------------------------------------------------------------
+        SMALL DEVICES
+		devices with width between 481px and 767px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 767px ) {
+
+        /* your CSS here */
+
+    }
+
+    /* -------------------------------------------------------------------------
+        EXTRA SMALL DEVICES
+		devices with width up to 480px
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 480px ) {
+
+        /* your CSS here */
+
+    }

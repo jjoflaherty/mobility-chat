@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <managed-bean>
+        <managed-bean-name>localeHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.locale.LocaleHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>userDAO</property-name>
+            <value>#{ejbHandler.userDAO}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>requestLocaleHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.locale.RequestLocaleHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>navigateTo</property-name>
+            <value>#{navigateTo}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>localeHandler</property-name>
+            <value>#{localeHandler}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>localeFromGet</property-name>
+            <value>#{param.l}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>
+

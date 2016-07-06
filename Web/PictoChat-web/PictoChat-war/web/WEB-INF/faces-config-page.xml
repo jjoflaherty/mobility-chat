@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <!-- Edit Page handler -->
+    <managed-bean id="editPageButtonsHandler">
+        <managed-bean-name>editPageButtonsHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.buttons.EditPageButtonsHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>pageDAO</property-name>
+            <value>#{ejbHandler.pageDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>pageButtonDAO</property-name>
+            <value>#{ejbHandler.pageButtonDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>buttonImageDAO</property-name>
+            <value>#{ejbHandler.buttonImageDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeClient</property-name>
+            <value>#{showClientHandler.activeClient}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Edit Page handler -->
+    <managed-bean id="editPageHandler">
+        <managed-bean-name>editPageHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.page.EditPageHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>pageDAO</property-name>
+            <value>#{ejbHandler.pageDAO}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Create Page handler -->
+    <managed-bean id="createPageHandler">
+        <managed-bean-name>createPageHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.page.CreatePageHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeClient</property-name>
+            <value>#{showClientHandler.activeClient}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Delete Page handler -->
+    <managed-bean id="deletePageHandler">
+        <managed-bean-name>deletePageHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.page.DeletePageHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeClient</property-name>
+            <value>#{showClientHandler.activeClient}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Preview Page handler -->
+    <managed-bean id="previewPageHandler">
+        <managed-bean-name>previewPageHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.page.PreviewPageHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>pageDAO</property-name>
+            <value>#{ejbHandler.pageDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>pageId</property-name>
+            <value>#{param.id}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>
+

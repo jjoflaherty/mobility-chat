@@ -41,6 +41,11 @@ public class HttpPostService extends IntentService
 			public static final String EXTRA_RESULTRECEIVER = "resultreceiver"; // MUST be set -> class that handles the result (MUST be inherited from ResultReceiver)
 			public static final String EXTRA_REQUESTBODY = "requestbody";
 		}
+		public class Info {
+			public static final String EXTRA_URL = "url";
+			public static final String EXTRA_METHOD = "method";
+			public static final String EXTRA_BODY = "body";
+		}
 	}
 
 	public HttpPostService()
@@ -79,6 +84,7 @@ public class HttpPostService extends IntentService
 
 			String postUrl = (String)intent.getExtras().get(IntentSettings.Mandatory.EXTRA_URL);
 			HttpPost post = new HttpPost(postUrl);
+			post.setHeader("Content-type", "application/json");
 
 			StringEntity entity = new StringEntity((String)intent.getExtras().get(IntentSettings.Mandatory.EXTRA_REQUESTBODY), "iso-8859-1");
 			post.setEntity(entity);
@@ -86,7 +92,10 @@ public class HttpPostService extends IntentService
 			ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 				@Override
 				public String handleResponse(HttpResponse response)	throws ClientProtocolException, IOException {
-					 return EntityUtils.toString(response.getEntity());
+					if (response.getStatusLine().getStatusCode() != 204)
+						return EntityUtils.toString(response.getEntity());
+					else
+						return "{}";
 				}
 			};
 

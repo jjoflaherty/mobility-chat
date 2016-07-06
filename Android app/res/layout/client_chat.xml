@@ -1,85 +1,139 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="be.kpoint.pictochat.app.activities.ClientChatActivity" >
+    tools:context=".Activities.ClientChatActivity" >
 
-    <TextView
-        android:id="@+id/clientChat_lblClientName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ListView
-        android:id="@+id/clientChat_lstMessages"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clientChat_txtMessage"
-        android:layout_below="@+id/clientChat_lblClientName" >
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-    </ListView>
-
-    <HorizontalScrollView
-        android:id="@+id/clientChat_scrPictos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" >
-
-        <LinearLayout
-            android:id="@+id/clientChat_lytPictos"
+        <TextView
+            android:id="@+id/clientChat_lblClientName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-        </LinearLayout>
-    </HorizontalScrollView>
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/clientChat_btnSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clientChat_lstDatabases"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/clientChat_send" />
+        <ListView
+            android:id="@+id/clientChat_lstMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/clientChat_txtMessage"
+            android:layout_below="@+id/clientChat_lblClientName" >
 
-    <LinearLayout 
-        android:id="@+id/clientChat_lytDummy"
-	  	android:focusable="true"
-	  	android:focusableInTouchMode="true" 
-	  	android:layout_width="0px"
-	  	android:layout_height="0px"
-	  	android:orientation="vertical" />
-    
-    <EditText
-        android:id="@+id/clientChat_txtMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clientChat_lstDatabases"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:ems="10"
-        android:inputType="textMultiLine" />
+        </ListView>
 
-    <Spinner
-        android:id="@+id/clientChat_lstDatabases"
+        <LinearLayout
+            android:id="@+id/clientChat_lytDummy"
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" />
+
+        <EditText
+            android:id="@+id/clientChat_txtMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/clientChat_prgBusy"
+            android:layout_toStartOf="@+id/clientChat_prgBusy"
+            android:layout_above="@+id/clientChat_lstDatabases"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <ProgressBar
+            android:id="@+id/clientChat_prgBusy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/clientChat_txtMessage"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+            android:visibility="invisible" />
+
+        <Spinner
+            android:id="@+id/clientChat_lstDatabases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/clientChat_prgBusy"
+            android:layout_toStartOf="@+id/clientChat_prgBusy" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/clientChat_lytPopup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clientChat_scrPictos"
-        android:layout_toLeftOf="@+id/clientChat_btnSend" />
+        android:layout_height="match_parent"
+        android:background="#BB000000"
+        android:visibility="gone" >
 
-    <ProgressBar
-        android:id="@+id/clientChat_prgBusy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/clientChat_btnSend"
-        android:layout_alignTop="@+id/clientChat_lstDatabases"
-        android:visibility="invisible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border"
+            android:orientation="vertical" >
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/clientChat_lblMyMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/clientChat_messageToSend"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            
+            <HorizontalScrollView
+                android:id="@+id/clientChat_scrPictos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" >
+
+                <LinearLayout
+                    android:id="@+id/clientChat_lytMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:id="@+id/clientChat_lytTranslations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" >
+
+                <Button
+                    android:id="@+id/clientChat_btnClosePopup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clientChat_cancel" />
+
+                <Button
+                    android:id="@+id/clientChat_btnSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clientChat_send" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

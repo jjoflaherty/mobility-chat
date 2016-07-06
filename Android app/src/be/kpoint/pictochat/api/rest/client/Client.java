@@ -1,12 +1,15 @@
 package be.kpoint.pictochat.api.rest.client;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import be.kpoint.pictochat.api.rest.button.Button;
+import be.kpoint.pictochat.api.rest.coach.Coach;
 import be.kpoint.pictochat.api.rest.friend.Friend;
 import be.kpoint.pictochat.api.rest.ids.ClientId;
-import be.kpoint.pictochat.api.rest.ids.CoachId;
 import be.kpoint.pictochat.api.rest.page.Page;
 
 public class Client implements Serializable
@@ -14,11 +17,13 @@ public class Client implements Serializable
 	private ClientId id;
 	private String firstName;
 	private String lastName;
-	private Integer pin;
+	private String imageUrl;
+	private String code;
 	private Page startPage;
 	private Set<Page> pages = new HashSet<Page>();
-	private Set<CoachId> coachIds = new HashSet<CoachId>();
+	private Set<Coach> coaches = new HashSet<Coach>();
 	private Set<Friend> friends = new HashSet<Friend>();
+	private List<Button> buttons = new ArrayList<Button>();
 
 	private Client() {
 		//Needed for serialization
@@ -27,10 +32,11 @@ public class Client implements Serializable
 	{
 		this.id = new ClientId(id);
 	}
-	public static Client create(long id, String firstName, String lastName) {
+	public static Client create(long id, String firstName, String lastName, String imageUrl) {
 		Client user = new Client(id);
 		user.firstName = firstName;
 		user.lastName = lastName;
+		user.imageUrl = imageUrl;
 
 		return user;
 	}
@@ -42,25 +48,30 @@ public class Client implements Serializable
 	}
 
 
-	protected void setPin(Integer pin) {
-		this.pin = pin;
+	protected void setCode(String code) {
+		this.code = code;
 	}
-	protected void addCoachId(long coachId) {
-		this.coachIds.add(new CoachId(coachId));
+	protected void addCoach(Coach coach) {
+		this.coaches.add(coach);
 	}
-
 	protected void addPage(Page page) {
 		this.pages.add(page);
 	}
 	protected void addFriend(Friend friend) {
 		this.friends.add(friend);
 	}
+	protected void addButton(Button button) {
+		this.buttons.add(button);
+	}
 
-	public Set<CoachId> getCoachIds() {
-		return this.coachIds;
+	public Set<Coach> getCoaches() {
+		return this.coaches;
 	}
 	public Set<Friend> getFriends() {
 		return this.friends;
+	}
+	public List<Button> getButtons() {
+		return this.buttons;
 	}
 
 
@@ -86,8 +97,11 @@ public class Client implements Serializable
 	{
 		return this.firstName + " " + this.lastName;
 	}
-	public Integer getPin() {
-		return this.pin;
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+	public String getCode() {
+		return this.code;
 	}
 
 

@@ -7,8 +7,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +33,13 @@ public class FileLogger extends FileCache
 		super(context, "logs");
 
 		setCurrentLog(name);
+	}
+
+	public static FileLogger getDefault(Context context) {
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH'u'mm'm'ss");
+		String logName = format.format(calendar.getTime());
+		return new FileLogger(context, logName);
 	}
 
 	public void setCurrentLog(String name) {
@@ -71,7 +82,7 @@ public class FileLogger extends FileCache
 		Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
 		intent.setType("message/rfc822");
 		intent.putExtra(Intent.EXTRA_EMAIL, new String[]{Constants.FileLogMailRecipient});
-		intent.putExtra(Intent.EXTRA_SUBJECT, "Viamigo Log " + this.currentLog.getName());
+		intent.putExtra(Intent.EXTRA_SUBJECT, "PictoChat Log " + this.currentLog.getName());
 		intent.putExtra(Intent.EXTRA_TEXT, body);
 
 		ArrayList<Uri> uris = new ArrayList<Uri>();
@@ -91,6 +102,21 @@ public class FileLogger extends FileCache
 		intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 
 		context.startActivity(intent);
+	}
+
+	public List<File> getLogFiles() {
+		File[] files = this.cacheDir.listFiles();
+
+		SortedSet<File> sorted = new TreeSet<>(new Comparator<File>() {
+			@Override
+			public int compare(File lhs, File rhs) {
+				return Long.valueOf(lhs.lastModified()).compareTo(Long.valueOf(rhs.lastModified()));
+			}
+		});
+		for (File file : files)
+			if (sorted.add(file));
+
+		return new ArrayList<File>(sorted);
 	}
 
 	private File selectLogFile(String name) {

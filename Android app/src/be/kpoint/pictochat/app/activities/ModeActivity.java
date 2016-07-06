@@ -26,6 +26,8 @@ import com.google.gson.Gson;
 
 import be.kpoint.pictochat.app.Constants;
 import be.kpoint.pictochat.app.R;
+import be.kpoint.pictochat.app.activities.client.RoomsActivity;
+import be.kpoint.pictochat.app.activities.coach.ClientListActivity;
 import be.kpoint.pictochat.app.domain.Client;
 import be.kpoint.pictochat.app.domain.Coach;
 
@@ -40,12 +42,6 @@ public class ModeActivity extends Activity
 	private RadioButton radCoach;
 	private LinearLayout lytClients;
 	private Spinner lstClients;
-	/*private TextView lblFirstName;
-	private TextView lblLastName;
-	private TextView lblPin;
-	private EditText txtFirstName;
-	private EditText txtLastName;
-	private EditText txtPin;*/
 	private Button btnOk;
 
 	private SharedPreferences settings;
@@ -54,10 +50,6 @@ public class ModeActivity extends Activity
 	private Coach coach;
 	private Client selected;
 	private List<Client> clients;
-
-	/*private String firstName;
-	private String lastName;
-	private Integer pin;*/
 
 
 	//Life cycle
@@ -173,37 +165,6 @@ public class ModeActivity extends Activity
 				RoomsActivity.start(ModeActivity.this, ModeActivity.this.selected);
 				ModeActivity.this.finish();
 			}
-
-			/*String firstName = ModeActivity.this.txtFirstName.getText().toString();
-			String lastName = ModeActivity.this.txtLastName.getText().toString();
-			String pinString = ModeActivity.this.txtPin.getText().toString();
-			Integer pin = pinString.isEmpty() ? 0 : Integer.parseInt(pinString);*/
-
-			/*if (firstName.isEmpty())
-				Toast.makeText(ModeActivity.this, R.string.mode_toast_firstName_required, Toast.LENGTH_SHORT).show();
-			else if (lastName.isEmpty())
-				Toast.makeText(ModeActivity.this, R.string.mode_toast_lastName_required, Toast.LENGTH_SHORT).show();
-			else if (pin.equals(0) && ModeActivity.this.radClient.isChecked())
-				Toast.makeText(ModeActivity.this, R.string.mode_toast_pin_required, Toast.LENGTH_SHORT).show();
-			else {
-				ModeActivity.this.editor.putString(Constants.PREF_KEY_FIRSTNAME, firstName);
-				ModeActivity.this.editor.putString(Constants.PREF_KEY_LASTNAME, lastName);
-				ModeActivity.this.editor.putInt(Constants.PREF_KEY_PIN, pin);
-				ModeActivity.this.editor.commit();
-
-				if (pin.equals(0)) {
-					Coach coach = new Coach(firstName, lastName);
-					CoachActivity.start(ModeActivity.this, coach);
-				}
-				else {
-					Client client = new Client(firstName, lastName);
-					client.setPin(pin);
-
-					ClientActivity.start(ModeActivity.this, client);
-				}
-
-				ModeActivity.this.finish();
-			}*/
 		}
 	};
 }

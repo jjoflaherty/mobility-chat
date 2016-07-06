@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <!-- Register handler -->
+    <managed-bean>
+        <managed-bean-name>registerHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.user.RegisterHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>userManager</property-name>
+            <value>#{ejbHandler.userManager}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>avatarDAO</property-name>
+            <value>#{ejbHandler.avatarDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>roleDAO</property-name>
+            <value>#{ejbHandler.roleDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>sessionHandler</property-name>
+            <value>#{sessionHandler}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Change Password handler -->
+    <managed-bean>
+        <managed-bean-name>changePasswordHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.user.ChangePasswordHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>userDAO</property-name>
+            <value>#{ejbHandler.userDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>loggedInUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Show Member handler -->
+    <managed-bean>
+        <managed-bean-name>adminMemberHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.member.AdminMemberHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>userDAO</property-name>
+            <value>#{ejbHandler.userDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>organisationDAO</property-name>
+            <value>#{ejbHandler.organisationDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>memberDAO</property-name>
+            <value>#{ejbHandler.memberDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>roleDAO</property-name>
+            <value>#{ejbHandler.roleDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeMember</property-name>
+            <value>#{sessionHandler.activeMember}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>
+

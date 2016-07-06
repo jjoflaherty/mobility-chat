@@ -4,7 +4,7 @@
     android:gravity="center_vertical" >
 
     <ImageView
-        android:id="@+id/userItem_imgPresence"
+        android:id="@+id/clientItem_imgAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -12,25 +12,59 @@
         android:src="@drawable/status_offline" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/userItem_txtText"
+            android:id="@+id/clientItem_txtText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="2dp"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/userItem_txtSubText"
+            android:id="@+id/clientItem_txtSubText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/clientItem_lytBubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@drawable/notification" />
+
+        <TextView
+            android:id="@+id/clientItem_lblUnreadCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/clientItem_imgStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="75dp"
+        android:src="@drawable/ic_textsms_black_36dp" />
 
 </LinearLayout>

@@ -1,16 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/picto_imgPicto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxWidth="75dp" />
+	<LinearLayout 
+	    android:id="@+id/picto_lytWrapper"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"    
+	    android:layout_marginBottom="10dp"
+	    android:layout_marginEnd="10dp"
+	    android:layout_marginRight="10dp"
+	    android:orientation="vertical" >
+	
+	    <ImageView
+	        android:id="@+id/picto_imgPicto"
+	        android:layout_width="60dp"
+	        android:layout_height="60dp"
+	        android:adjustViewBounds="true"
+	        android:maxWidth="75dp"
+	        android:scaleType="fitXY" />
+	
+	    <TextView
+	        android:id="@+id/picto_lblText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal" />
+	
+	</LinearLayout>
 
-    <TextView 
-        android:id="@+id/picto_lblTag" />
-
-</LinearLayout>
+</FrameLayout>

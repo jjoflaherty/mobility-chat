@@ -1,0 +1,24 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kpoint.javaee.web.handler;
+
+import kpoint.javaee.server.core.util.MethodLogger;
+import kpoint.javaee.web.handler.enums.MessageType;
+import org.apache.log4j.Logger;
+
+/**
+ *
+ * @author Steven
+ */
+public abstract class SimpleFormHandler
+{
+    private String message;
+    private MessageType messageType;
+
+
+
+    public abstract Logger getLogger();
+    public abstract MethodLogger getMethodLogger();
+}

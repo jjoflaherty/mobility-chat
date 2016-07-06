@@ -25,6 +25,16 @@ public class Button implements Serializable
 	{
 		this.color = color;
 	}
+	public static Button create(String text, String url) {
+		Button button = new Button();
+		button.text = text;
+		button.url = url;
+
+		button.icon = "Upload";
+		button.action = "Text";
+
+		return button;
+	}
 	public static Button create(Long id, String color, String icon, String action, String url, Integer cell) {
 		Button button = new Button(color);
 		button.id = id;

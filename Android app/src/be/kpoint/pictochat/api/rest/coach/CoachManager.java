@@ -11,6 +11,7 @@ import android.os.Bundle;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import be.kpoint.pictochat.api.rest.ids.CoachId;
 import be.kpoint.pictochat.app.Constants;
 import be.kpoint.pictochat.network.AbstractRestServiceManager;
 import be.kpoint.pictochat.network.ApiTarget;
@@ -43,7 +44,7 @@ public class CoachManager extends AbstractRestServiceManager
 		}
 
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("name", name));
+		nameValuePairs.add(new BasicNameValuePair("email", name));
 		nameValuePairs.add(new BasicNameValuePair("pw", hash));
 		ApiTarget target = Constants.coach_login.setUrlParameters(nameValuePairs);
 
@@ -51,5 +52,12 @@ public class CoachManager extends AbstractRestServiceManager
 		metadata.putString(LoginResultReceiver.BUNDLE_USERNAME_TAG, name);
 		metadata.putString(LoginResultReceiver.BUNDLE_PASSWORD_TAG, hash);
 		get(target, metadata, loginReceiver);
+	}
+	public void get(CoachId id, LoginResultReceiver receiver) {
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("id", Long.toString(id.getNumber())));
+		ApiTarget target = Constants.coach_read.setUrlParameters(nameValuePairs);
+
+		get(target, receiver);
 	}
 }

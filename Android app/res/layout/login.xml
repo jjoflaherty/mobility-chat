@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:text="@string/login_text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -48,7 +48,7 @@
                     android:id="@+id/login_lblUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/login_username" />
+                    android:text="@string/login_email" />
 
                 <EditText
                     android:id="@+id/login_txtUsername"
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button

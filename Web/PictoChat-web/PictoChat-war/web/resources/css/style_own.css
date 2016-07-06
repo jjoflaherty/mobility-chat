@@ -1,0 +1,126 @@
+/*
+    Document   : style
+    Created on : 21-jan-2014, 22:47:47
+    Author     : Steven Solberg
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root {
+    display: block;
+}
+body {
+    margin: 0px;
+    font-family: tahoma, calibri, arial;
+    font-size: 0.9em;
+}
+
+div.rich-page {
+    margin: auto;
+}
+div.rich-page-header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+div.rich-page-header .rich-toolbar {
+    border: 0;
+}
+div.rich-page-header table.rich-toolbar:last-child {
+    border-bottom: 1px solid
+}
+div.rich-page-content {
+    position: relative;
+    top: 0px;
+}
+div.rich-page-sidebar {
+    position: fixed;
+    top: 0px;
+    width: 270px;
+    height: 100%;
+    border-right: 1px solid black;
+    padding: 54px 10px 0px 10px;
+}
+div.rich-page-body {
+    margin-left: 290px;
+    padding: 54px 30px 30px;
+}
+
+div.rich-panel {
+    margin-bottom: 30px;
+}
+
+div.rich-page-content div.rich-panel h1 {
+    margin-top: 0px;
+}
+
+div.progress-bar-holder {
+    border: 1px solid;
+    padding: 0px;
+    width: 100px;
+    font-size: 10px;
+    display: inline-block;
+    background-color: white;
+    color: black;
+}
+div.progress-bar-holder div {
+    margin: 0px;
+    height: inherit;
+    text-align: center;
+}
+
+/* Theming */
+div.rich-page-sidebar {
+    color: #FFFFFF;
+    background-color: #161B3A;
+}
+div.rich-page-sidebar ul {
+    padding-left: 10px;
+}
+
+.colCenter {
+    text-align: center;
+}
+.colVertical {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+
+  /* also accepts left, right, top, bottom coordinates; not required, but a good idea for styling */
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.rich-menu-list-bg .sticky-note .rich-menu-item-label {
+    background-color: #FF6666;
+}
+
+.rich-table-cell.gray-bg {
+    background-color: #CCCCCC;
+}
+.rich-table-cell.deprecated {
+    background-color: #CC0000;
+    color: white;
+}
+.rich-subtable-cell {
+    vertical-align: top;
+}
+
+div.rich-tool-tip div {
+    color: black;
+}
+
+.tooltip {
+    color: black;
+}
+.admin-only {
+    color: cyan;
+}
+.note {
+    color: gray;
+}

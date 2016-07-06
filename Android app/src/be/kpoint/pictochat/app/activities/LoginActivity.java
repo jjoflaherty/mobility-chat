@@ -24,6 +24,8 @@ import be.kpoint.pictochat.api.rest.coach.CoachManager;
 import be.kpoint.pictochat.api.rest.coach.LoginResultReceiver;
 import be.kpoint.pictochat.app.Constants;
 import be.kpoint.pictochat.app.R;
+import be.kpoint.pictochat.app.activities.client.RoomsActivity;
+import be.kpoint.pictochat.app.activities.coach.ClientListActivity;
 import be.kpoint.pictochat.app.activities.components.ProgressSpinnerOverlay;
 import be.kpoint.pictochat.app.activities.components.ProgressSpinnerOverlay.IProgressSpinnerOverlay;
 import be.kpoint.pictochat.app.domain.Client;
@@ -85,19 +87,6 @@ public class LoginActivity extends Activity implements IProgressSpinnerOverlay
 
 	    this.coachManager = new CoachManager(this);
 
-	    /*SharedPreferences settings = getSharedPreferences(Constants.PREF_LOCATION_LOGIN, MODE_PRIVATE);
-	    final String phoneNr = settings.getString(Constants.PREF_KEY_LOGIN, null);
-	    final String pin = settings.getString(Constants.PREF_KEY_PIN, null);
-
-	    this.txtPhoneNr.setText(phoneNr);
-	    this.txtPin.setText(pin);
-
-	    if (phoneNr != null && pin != null) {
-	    	showWaitSpinner(App.buildString(R.string.logging_in));
-
-	    	this.deviceManager.login(phoneNr, pin, this.blindLoginDeviceReceiver);
-	    }*/
-
 	    this.gestureOverlayView.setEventsInterceptionEnabled(false);
 	    this.gestureOverlayView.addOnGesturePerformedListener(this.gestureListener);
 	    this.gestureLib = GestureLibraries.fromRawResource(this, R.raw.gestures);
@@ -105,28 +94,6 @@ public class LoginActivity extends Activity implements IProgressSpinnerOverlay
 
 	    App.logToFile(FileLogItem.debug(this, Tags.LIFE_CYCLE, Messages.ACTIVITY_CREATE_FINISHED));
 	}
-
-
-	/*private void goToUsersActivity(Device device) {
-		Intent intent;
-
-		if (device.InDebugMode())
-			intent = new Intent(this, DebugActivity.class);
-		else
-			intent = new Intent(this, UsersActivity.class);
-
-		intent.putExtra("device", device);
-		this.startActivity(intent);
-
-		this.finish();
-	}*/
-	/*private void goToUpdateActivity(Device device) {
-		final Intent updateIntent = new Intent(LoginActivity.this, UpdateActivity.class);
-		updateIntent.putExtra("device", device);
-		LoginActivity.this.startActivity(updateIntent);
-
-		LoginActivity.this.finish();
-	}*/
 
 
 	@Override
@@ -156,7 +123,7 @@ public class LoginActivity extends Activity implements IProgressSpinnerOverlay
 
 		@Override
 		public void onLoginWrong() {
-			//Toast.makeText(LoginActivity.this, VpadMessages.Toast.wrongPassword(), Toast.LENGTH_LONG).show();
+			Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_toast_wrong_password), Toast.LENGTH_LONG).show();
 		}
 
 		@Override
@@ -180,138 +147,9 @@ public class LoginActivity extends Activity implements IProgressSpinnerOverlay
 		public void onServerError(String json) {
 			App.logToFile(FileLogItem.error(LoginActivity.this, Tags.REST, Messages.LOGIN_SERVER_ERROR, json));
 
-			Toast.makeText(LoginActivity.this, "De server gaf een ongeldig resultaat", Toast.LENGTH_LONG).show();
+			Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_toast_server_error), Toast.LENGTH_LONG).show();
 		}
 	};
-	/*private LoginResultReceiver blindLoginDeviceReceiver = new LoginResultReceiver("blindLoginDevice")
-	{
-		@Override
-		public void onLoggedInSuccessfully(Device device) {
-			App.logToFile(FileLogItem.debug(LoginActivity.this, Tags.REST, Messages.BLIND_LOGIN_SUCCESFULLY));
-
-	    	App.setDevice(device);
-	    	Constants.ViamigoServer.setVersion("v" + device.getApi());
-
-	    	LoginActivity.this.deviceManager.sendVersion(device);
-
-			if (device.InDebugMode()) {
-        		//Rest.useDevelopmentServer();
-	    	}
-
-	    	if (device.IsLinkedToUser()) {
-				if (!device.getUser().hasActiveTransportation()) {
-					LoginActivity.this.showWaitSpinner(App.buildString(R.string.checking_updates));
-					LoginActivity.this.versionManager.check(device, LoginActivity.this.checkVersionReceiver);
-				}
-	    		else
-	    			LoginActivity.this.goToUsersActivity(device);
-    		}
-		    else
-		    	LoginActivity.this.goToUsersActivity(device);
-		}
-
-		@Override
-		public void onLoginWrong() {}
-
-		@Override
-		protected void onAllRequestsCompleted() {
-			hideWaitSpinner();
-		}
-
-		@Override
-		public void onTimedOut() {
-			App.logToFile(FileLogItem.warn(LoginActivity.this, Tags.REST, Messages.BLIND_LOGIN_TIMED_OUT));
-
-			Toast.makeText(LoginActivity.this, VpadMessages.Toast.timeout(), Toast.LENGTH_LONG).show();
-		}
-
-		@Override
-		public void onClientError() {
-			App.logToFile(FileLogItem.error(LoginActivity.this, Tags.REST, Messages.BLIND_LOGIN_CLIENT_ERROR));
-		}
-
-		@Override
-		public void onServerError(String json) {
-			App.logToFile(FileLogItem.error(LoginActivity.this, Tags.REST, Messages.BLIND_LOGIN_SERVER_ERROR));
-
-			Toast.makeText(LoginActivity.this, "De server gaf een ongeldig resultaat", Toast.LENGTH_LONG).show();
-		}
-	};
-	private CheckVersionResultReceiver checkVersionReceiver = new CheckVersionResultReceiver("checkVersion")
-	{
-		@Override
-		public void onTimedOut() {
-			App.logToFile(FileLogItem.warn(LoginActivity.this, Tags.REST, Messages.UPDATE_TIMED_OUT));
-
-			goToUsersActivity(App.ThisDevice());
-		}
-
-		@Override
-		public void onFinished() {
-			LoginActivity.this.hideWaitSpinner();
-		}
-
-		@Override
-		public void onUpdateAvailable(final Device device) {
-			App.logToFile(FileLogItem.info(LoginActivity.this, Tags.REST, Messages.UPDATE_AVAILABLE));
-
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginActivity.this);
-
-    		alertDialogBuilder.setMessage(R.string.update_text);
-    		alertDialogBuilder.setCancelable(false);
-
-    		alertDialogBuilder.setPositiveButton(App.buildString(R.string.basic_yes),
-				new DialogInterface.OnClickListener(){
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-				    	dialog.dismiss();
-
-				    	LoginActivity.this.goToUpdateActivity(device);
-					}
-				});
-
-    		alertDialogBuilder.setNegativeButton(App.buildString(R.string.basic_no),
-				new DialogInterface.OnClickListener(){
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-
-						LoginActivity.this.goToUsersActivity(device);
-					}
-				});
-
-    		AlertDialog alert = alertDialogBuilder.create();
-    		alert.show();
-		}
-
-		@Override
-		public void onUpToDate(Device device) {
-			LoginActivity.this.goToUsersActivity(device);
-		}
-
-		@Override
-		public void onMustUpdate(Device device) {
-			App.logToFile(FileLogItem.info(LoginActivity.this, Tags.REST, Messages.UPDATE_MANDATORY));
-
-			LoginActivity.this.goToUpdateActivity(device);
-		}
-
-		@Override
-		public void onClientError() {
-			App.logToFile(FileLogItem.error(LoginActivity.this, Tags.REST, Messages.UPDATE_CLIENT_ERROR));
-
-			Toast.makeText(LoginActivity.this, "Er trad een fout op", Toast.LENGTH_LONG).show();
-			LoginActivity.this.goToUsersActivity(App.ThisDevice());
-		}
-
-		@Override
-		public void onServerError(String json) {
-			App.logToFile(FileLogItem.error(LoginActivity.this, Tags.REST, Messages.UPDATE_SERVER_ERROR));
-
-			Toast.makeText(LoginActivity.this, "De server gaf een ongeldig resultaat", Toast.LENGTH_LONG).show();
-			LoginActivity.this.goToUsersActivity(App.ThisDevice());
-		}
-	};*/
 
 
 	//Interface events
@@ -323,7 +161,7 @@ public class LoginActivity extends Activity implements IProgressSpinnerOverlay
 			String username = LoginActivity.this.txtUsername.getText().toString();
 			String password = LoginActivity.this.txtPassword.getText().toString();
 
-			LoginActivity.this.showWaitSpinner(App.buildString(R.string.logging_in));
+			LoginActivity.this.showWaitSpinner(App.buildString(R.string.login_logging_in));
 			LoginActivity.this.coachManager.login(username, password, LoginActivity.this.loginCoachReceiver);
 		}
 	};

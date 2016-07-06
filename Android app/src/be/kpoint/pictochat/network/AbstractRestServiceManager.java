@@ -57,6 +57,7 @@ public abstract class AbstractRestServiceManager
 
 				Intent service = new Intent(context, HttpGetService.class);
 				service.putExtra(HttpGetService.IntentSettings.Mandatory.EXTRA_URL, target.toString());
+				service.putExtra(HttpGetService.IntentSettings.Mandatory.EXTRA_CACHE, target.canBeCached());
 				service.putExtra(HttpGetService.IntentSettings.Mandatory.EXTRA_RESULTRECEIVER, receiver);
 
 				if (timeout != null)
@@ -143,9 +144,9 @@ public abstract class AbstractRestServiceManager
 			try {
 				if (metadata == null)
 					metadata = new Bundle();
-				metadata.putString(HttpGetService.IntentSettings.Info.EXTRA_URL, target.toString());
-				metadata.putString(HttpGetService.IntentSettings.Info.EXTRA_METHOD, "POST");
-				metadata.putString(HttpGetService.IntentSettings.Info.EXTRA_BODY, body.toString());
+				metadata.putString(HttpPostService.IntentSettings.Info.EXTRA_URL, target.toString());
+				metadata.putString(HttpPostService.IntentSettings.Info.EXTRA_METHOD, "POST");
+				metadata.putString(HttpPostService.IntentSettings.Info.EXTRA_BODY, body.toString());
 
 				Intent service = new Intent(context, HttpPostService.class);
 				service.putExtra(HttpPostService.IntentSettings.Mandatory.EXTRA_URL, target.toString());

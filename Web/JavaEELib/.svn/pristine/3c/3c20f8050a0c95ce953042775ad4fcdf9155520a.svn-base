@@ -1,0 +1,27 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kpoint.javaee.server.core.exceptions;
+
+import java.util.Set;
+
+/**
+ *
+ * @author Steven
+ */
+public class NestedException
+{
+    public static void throwIfPresent(Throwable t, Set<Class> types) throws Throwable {
+        Throwable cause = t;
+
+        do {
+            for (Class type : types)
+                if (type.isInstance(cause))
+                    throw (Throwable)type.cast(cause);
+
+            cause = cause.getCause();
+        }
+        while (cause != null);
+    }
+}

@@ -1,158 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">AbleChat</string>
+    <string name="app_name_with_version">AbleChat 0.1.6</string>
+    
+    <string name="pubnub_title_notification">AbleChat</string>
+	<string name="pubnub_service_started_notification">Pubnub is running</string> 
+	
+	<string name="new_message_title_notification">New message</string>
+	<string name="new_message_notification">from %s</string>
+	
     <string name="login_login">Log in</string>
     <string name="login_cancel">Cancel</string>
-    <string name="login_text">Please specify your username and password to log in.</string>
+    <string name="login_text">Please specify your username and password to log in</string>
     <string name="login_password">Password</string>
-    <string name="login_username">Username</string>
-    <string name="login_wrong_password">Incorrect PIN</string>
+    <string name="login_email">Email</string> 
+    <string name="login_logging_in">Logging in&#x2026;</string>
+    <string name="login_toast_server_error">Server returned invalid response</string>  
+    <string name="login_toast_wrong_password">Incorrect username or password</string>   
     
     <string name="mode_select_user">Who will use this device?</string>
     <string name="mode_client">Client</string>
     <string name="mode_coach">Coach</string>
     <string name="mode_clients">Clients</string>
-    <string name="mode_basic_info">Basic info</string>
-    <string name="mode_firstName">First name</string>
-    <string name="mode_lastName">Last name</string>
-    <string name="mode_pin">PIN</string>
     <string name="mode_ok">OK</string>
-    <string name="mode_toast_firstName_required">First name is required</string>
-    <string name="mode_toast_lastName_required">Last name is required</string>
-    <string name="mode_toast_pin_required">PIN is required</string>
     
-    <string name="client_send">Send</string>
-    <string name="clientChat_send">Send</string>
-    
-    <string name="coach_menu_add_user">Add user</string>
-    <string name="coach_menu_manage_users">Manage users</string>
-    <string name="add_user_add_user">Add user</string>
-    <string name="add_user_firstName">First name</string>
-    <string name="add_user_lastName">Last name</string>
-    <string name="add_user_pin">PIN</string>
-    <string name="add_user_ok">OK</string>
-    <string name="add_user_cancel">Cancel</string>
-    <string name="add_user_toast_firstName_required">First name is required</string>
-    <string name="add_user_toast_lastName_required">Last name is required</string>
-    <string name="add_user_toast_pin_required">PIN is required</string>
-    
-    
-    
-    
-    <string name="no_conn">No connection</string>
-    <string name="no_conn_text">The device could not connect to the website. The service might not be available at this time or you have poor coverage at this location.</string>
-    <string name="no_conn_refresh">Refresh</string>
-    <string name="wifi_noconn">No connection</string>
-    <string name="wifi_text">The device could not reach the website despite WiFi and 3G being enabled. You might be connected to a network that doesn\'t allow access to the internet. Switch off WiFi and try again.</string>
-    <string name="wifi_settings">WiFi settings</string>
-    <string name="wifi_retry">Retry</string>
-    <string name="safe_zone">Safe zone</string>
-    <string name="danger_zone">Danger zone</string>
-    <string name="network_conn">Connection</string>
-    <string name="network_text">The device is trying to connect to the Viamigo database.</string>
-    <string name="network_retry">Try again</string>
-    <string name="network_cancel">Cancel</string>
-    <string name="network_flymode_active">Flight mode is enabled on your device. Please disable it in order to use this app.</string>
-    <string name="network_data_disabled">Data is disabled on your device. Please enable it in order to use this app.</string>
-    <string name="network_wifi_disabled">Wifi is disabled on your device. Would you like to enable it?</string>
-    <string name="settings_go_flymode">Go to Settings to disable Flight mode</string>
-    <string name="settings_go_wifi">Go to Settings to enable Wifi</string>
-    <string name="settings_go_data">Go to Settings to enable Data</string>    
-    <string name="users">Users</string>
-    <string name="users_confirm">Confirm</string>
-    <string name="users_text">Select the user you want to assign this device to. You can change this at any time.</string>
-    <string name="users_organisation">Organisation</string>
-    <string name="rooms">Rooms</string>
+    <string name="rooms">Chatrooms</string>
     <string name="rooms_refresh">Refresh</string>
     <string name="rooms_no_rooms">No rooms could be found</string>
-    <string name="rooms_open">Open</string>
-    <string name="user_leaving_wait">Please wait</string>
-    <string name="user_leaving_dont_go">Do not leave yet!</string>
-    <string name="user_leaving_back">Back</string>
-    <string name="user_leaving_no_coach">No coach could be found. You may NOT leave.</string>
-    <string name="user_leaving_error">Something went wrong. You may NOT leave.</string>
-    <string name="path_active_ok">OK!</string>
-    <string name="path_active_stop">STOP!</string>
-    <string name="path_active_leave">You can leave now</string>
-    <string name="path_active_terminate">Are you sure you want to terminate the current path?</string>
-    <string name="path_active_terminated">The active path will be terminated</string>
-    <string name="path_ended_arrived">Arrived</string>
-    <string name="path_killed">Path ended</string>
+    <string name="rooms_coaches">Coaches</string>
+    <string name="rooms_loading_client_data">Loading client data&#x2026;</string>
+    <string name="rooms_menu_add_friend">Add friend</string>
+    <string name="rooms_menu_show_code">Show code</string>
+    
+    <string name="client_send">Send</string>
+    
+    <string name="clientList_me">Me</string>
+    
+    <string name="clientDetail_group_chat">Group</string>
+    <string name="clientDetail_private_chat">Private</string>
+    
+    <string name="clientChat_send">Send</string>  
+    <string name="clientChat_cancel">Cancel</string>  
+    <string name="clientChat_uploadedPictos">Clients\' pictos</string>  
+    <string name="clientChat_messageToSend">Message to send</string>  
+    
+    <string name="error_translate_client_error">The app sent an invalid request to the translation service</string>
+    <string name="error_translate_server_error">The translation service returned an invalid response</string>
+    <string name="error_translate_timeout">The translation service did not respond</string>    
+    
     <string name="error_error">Error</string>
-    <string name="error_occured">An error occured. Use the button to send a report to the development team.</string>
-    <string name="error_send">Send report</string>
-    <string name="update">Update</string>
-    <string name="update_available">Update available</string>
-    <string name="update_text">An update is available. Would you like to download it now?</string>
-    <string name="update_text_man">A new version has become available. This mandatory update must be installed in order to continue using Viamigo.</string>
-    <string name="update_cancel">Cancel</string>
-    <string name="request_coach_find">Looking for coach</string>
-    <string name="request_coach_text">Can you ask help from someone you know?</string>
-    <string name="sms_wants_coach">%1$s wants to start path %2$s --- Reply with \'vpad:coach\' to take responsibility.</string>
-    <string name="sms_will_coach">agreed to take responsibility for</string>
-    <string name="sms_you_are_coach">You are responsible for</string>
-    <string name="sms_nth_coach">You are the %1$se coach for %2$s. You will now also receive messages regarding the current transportation</string>
-    <string name="sms_coach_found">A coach was found for</string>
-    <string name="alert_near_address">near address</string>
-    <string name="alert_location_found">Location found</string>
-    <string name="alert_address">Address</string>
-    <string name="alert_address_coordinates">You can supply the following coordinates "%s" in google maps.</string>
-    <string name="alert_gps_init">GPS initialisation finished</string>
-    <string name="alert_gps_no_conn">GPS could not find current location</string>
-    <string name="alert_service_start">The path service was started for</string>
-    <string name="alert_service_stopped">The path service was stopped for</string>
-    <string name="alert_user_arrived">has arrived at the destination. Viamigo will remain active for another 10 minutes.</string>
-    <string name="alert_user_left_destination">has left the destination</string>
-    <string name="alert_user_at_location">is now at location:</string>
-    <string name="alert_user_leaving_location">is leaving location:</string>
-    <string name="alert_geocoded_user_at_waypoint">has reached waypoint _address_</string>
-    <string name="alert_geocoded_user_leaving_waypoint">is leaving waypoint _address_</string>
-    <string name="alert_geocoded_user_abnormal_speed">has an abnormal speed.</string>
-    <string name="alert_geocoded_user_normal_speed">has a normal speed again _address_</string>
-    <string name="alert_geocoded_speed_walk">A speed of %.2f km/h was measured on a walking section _address_</string>
-    <string name="alert_geocoded_speed_bike">A speed of %.2f km/h was measured on a bike section _address_</string>
-    <string name="alert_geocoded_speed_bus">A speed of %.2f km/h was measured _address_</string>
-    <string name="alert_geocoded_user_standing_still">is standing still for too long _address_</string>
-    <string name="alert_geocoded_user_moving">is on the move again _address_</string>
-    <string name="alert_geocoded_user_off_path">went too far off the path _address_ (%1$sm)</string>
-    <string name="alert_geocoded_user_on_path">is following the preset path again _address_</string>
-    <string name="alert_geocoded_user_entered_safe_zone">enters a safe zone _address_</string>
-    <string name="alert_geocoded_user_left_safe_zone">left the safe zone _address_</string>
-    <string name="alert_geocoded_user_entered_danger_zone">enters a danger zone _address_</string>
-    <string name="alert_geocoded_user_left_danger_zone">left the danger zone _address_</string>
-    <string name="alert_past_user_standing_still">was standing still for too long</string>
-    <string name="alert_past_user_moving">was on the move again</string>
-    <string name="alert_past_user_abnormal_speed">had an abnormal speed</string>
-    <string name="alert_past_user_normal_speed">had a normal speed again</string>
-    <string name="alert_past_user_off_path">went too far off the path</string>
-    <string name="alert_past_user_on_path">came back on the path</string>
-    <string name="alert_past_user_entered_danger_zone">entered a danger zone</string>
-    <string name="alert_past_user_left_danger_zone">left the danger zone</string>
-    <string name="alert_but">but</string>
-    <string name="alert_and_now_also">and</string>
-    <string name="toast_service_start">Path service was started</string>
-    <string name="toast_gps_ready">GPS is ready</string>
-    <string name="basic_ok">OK</string>
-    <string name="basic_yes">Yes</string>
-    <string name="basic_no">No</string>
-    <string name="basic_cancel">Cancel</string>
-    <string name="basic_wait">Please wait&#x2026;</string>
-    <string name="loading_paths">Loading paths&#x2026;</string>
-    <string name="loading_user">Loading user&#x2026;</string>
-    <string name="loading_active_transport">Loading active transportation&#x2026;</string>
-    <string name="finding_location">Finding location&#x2026;</string>
-    <string name="checking_updates">Checking for updates&#x2026;</string>
-    <string name="logging_in">Logging in&#x2026;</string>
-    <string name="wait_for_connection">Waiting for connection&#x2026;</string>
-    <string name="checking_for_active_path">Checking for active path&#x2026;</string>
-    <string name="linking_user">Linking user&#x2026;</string>
-    <string name="app_name">AbleChat 0.0.7</string>
-    <string name="app_version">0.0.7</string>
-    <string name="debug_mode">Debug mode</string>
-    <string name="debug_ok">OK</string>
-    <string name="title_activity_first_use">First use</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_user_chat">UserChatActivity</string>
-
+    <string name="error_occured">An error occurred. Use the button to send a report to the development team.</string>
+    <string name="error_send">Send report</string>   
 </resources>

@@ -3,7 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingRight="10dp" >
+    android:paddingRight="10dp"
+    android:paddingEnd="10dp" >
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         android:id="@+id/inputPicto_lblText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:text="TextView"
         android:textColor="@color/white" />
 

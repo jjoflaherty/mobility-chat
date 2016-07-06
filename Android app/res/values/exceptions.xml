@@ -2,7 +2,7 @@
 <resources>
     <string name="exceptions_">No connection</string>
     
-    <string name="exceptions_slow_conn">You appear to be using a slow connection. Please wait...</string>
+    <string name="exceptions_slow_conn">You appear to be using a slow connection. Please wait&#x2026;</string>
     <string name="exceptions_conn_failed">The connection could not be made</string>
     <string name="exceptions_server_error">The server returned an invalid reply\n%1$s: %2$s</string>
     <string name="exceptions_timeout">The request took too much time and was cancelled</string>

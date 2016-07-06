@@ -1,0 +1,13 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kpoint.javaee.web.handler.enums;
+
+/**
+ *
+ * @author Steven
+ */
+public enum MessageType {
+    Debug, Info, Warning, Error, Fatal
+}

@@ -9,7 +9,6 @@ public class FriendParser
 {
 	private static final String JSON_FIRSTNAME_TAG = "firstName";
 	private static final String JSON_LASTNAME_TAG = "lastName";
-	private static final String JSON_HOST_TAG = "host";
 	private static final String JSON_IMAGEURL_TAG = "imageUrl";
 	private static final String JSON_FRIENDID_TAG = "id";
 
@@ -18,10 +17,9 @@ public class FriendParser
 		long id = jsonObject.getLong(JSON_FRIENDID_TAG);
 		String firstName = jsonObject.getString(JSON_FIRSTNAME_TAG);
 		String lastName = jsonObject.getString(JSON_LASTNAME_TAG);
-		Boolean host = jsonObject.getBoolean(JSON_HOST_TAG);
 		String url = jsonObject.getString(JSON_IMAGEURL_TAG);
 
-		Friend friend = Friend.create(id, firstName, lastName, url, !host);
+		Friend friend = Friend.create(id, firstName, lastName, url);
 
 		return friend;
 	}

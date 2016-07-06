@@ -23,7 +23,7 @@ public class ImageDownloader extends AsyncTask<Object, Integer, Bitmap>
 
 	public ImageDownloader(String imageId, String requestUrl, ImageView view, int width, int height, Runnable onBitmapSet) {
 		this(imageId, requestUrl, view, width, height);
-		
+
 		this.runnable = onBitmapSet;
 	}
 	public ImageDownloader(String imageId, String requestUrl, ImageView view, int width, int height) {
@@ -31,7 +31,7 @@ public class ImageDownloader extends AsyncTask<Object, Integer, Bitmap>
         this.requestUrl = requestUrl;
         this.view = view;
         this.width = width;
-        this.height = height;        
+        this.height = height;
     }
 
 	@Override
@@ -44,23 +44,29 @@ public class ImageDownloader extends AsyncTask<Object, Integer, Bitmap>
 			//TODO Reuse the stream. Currently the file is downloaded twice.
 
             URL url = new URL(this.requestUrl);
-            InputStream stream = url.openStream();
 
             Options options = new Options();
             options.inJustDecodeBounds = true;
 
+            if (isCancelled()) return null;
+            InputStream stream = url.openStream();
+
+            if (isCancelled()) return null;
             bitmap = BitmapFactory.decodeStream(stream, outPadding, options);
             int sampleSize = calculateInSampleSize(options, this.width, this.height);
-
-            stream = url.openStream();
 
             options.inSampleSize = sampleSize;
             options.inJustDecodeBounds = false;
 
+            if (isCancelled()) return null;
+            stream = url.openStream();
+            if (isCancelled()) return null;
             bitmap = BitmapFactory.decodeStream(stream, outPadding, options);
 
             if (bitmap != null && this.imageId != null)
             	App.getImageCache().addImage(this.imageId, bitmap);
+
+            if (isCancelled()) return null;
         }
 		catch (Exception ex)
 		{
@@ -95,10 +101,16 @@ public class ImageDownloader extends AsyncTask<Object, Integer, Bitmap>
     protected void onPostExecute(Bitmap pic) {
 		if (pic != null) {
 			this.view.setImageBitmap(pic);
-			if (runnable != null)
+			if (this.runnable != null)
 				this.runnable.run();
 		}
     }
+	@Override
+	protected void onCancelled() {
+		this.view.setImageDrawable(null);
+
+		super.onCancelled();
+	}
 
 	public void execute() {
 		ParallelAsyncTask.executeAsyncTask(this);

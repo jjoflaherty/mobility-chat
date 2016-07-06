@@ -1,5 +1,6 @@
 package be.kpoint.pictochat.app.domain;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,9 +11,9 @@ import be.kpoint.pictochat.App;
 import be.kpoint.pictochat.util.ImageDownloader;
 
 
-public class Picto
+public class Picto implements Serializable
 {
-	private static final Pattern PATTERN = Pattern.compile("\\w\\/([\\w\\-]+)\\.\\w+");
+	private static final Pattern PATTERN = Pattern.compile("\\w\\/+([\\w\\-]+)\\.\\w+");
 
 	private String icon;
 	private String tag;

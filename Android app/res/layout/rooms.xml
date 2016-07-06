@@ -18,7 +18,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="gone" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,45 +34,12 @@
             android:gravity="bottom"
             android:orientation="vertical" >
 
-            <be.kpoint.pictochat.util.SnappedHorizontalScrollView
-                android:id="@+id/rooms_hsvRooms"
+            <ListView
+                android:id="@+id/rooms_lstRooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.8"
-                android:minHeight="25px"
-                android:minWidth="25px" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2" >
-
-                <Button
-                    android:id="@+id/rooms_btnPrevious"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.1"
-                    android:background="#3d3d3d"
-                    android:text="&lt;" />
-
-                <TextView
-                    android:id="@+id/rooms_txtRoomInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:visibility="invisible" />
-
-                <Button
-                    android:id="@+id/rooms_btnNext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.1"
-                    android:background="#3d3d3d"
-                    android:text=">" />
-            </LinearLayout>
+                android:layout_weight="1" >
+            </ListView>
 
             <TextView
                 android:id="@+id/rooms_txtNoRooms"
@@ -87,30 +55,16 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_weight="0.2" >
+                android:layout_weight="0.1" >
 
                 <Button
                     android:id="@+id/rooms_btnRefresh"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.4"
                     android:background="#3d3d3d"
-                    android:text="@string/rooms_refresh" />
+                    android:text="@string/rooms_refresh"
+                    android:visibility="gone" />
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2" >
-                </FrameLayout>
-
-                <Button
-                    android:id="@+id/rooms_btnOpen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.4"
-                    android:background="#8e4ca8"
-                    android:text="@string/rooms_open"
-                    android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

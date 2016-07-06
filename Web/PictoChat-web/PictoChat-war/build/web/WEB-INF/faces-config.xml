@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <!-- Main back-end handler -->
+    <managed-bean>
+        <managed-bean-name>ejbHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.EJBHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Main navigation handler -->
+    <managed-bean>
+        <managed-bean-name>navigateTo</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.navigation.PageNavigationHandler</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <!-- This Member handler -->
+    <managed-bean>
+        <managed-bean-name>sessionHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.SessionHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>userDAO</property-name>
+            <value>#{ejbHandler.userDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>rememberCookieDAO</property-name>
+            <value>#{ejbHandler.rememberCookieDAO}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Security handler -->
+    <managed-bean>
+        <managed-bean-name>securityHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.SecurityHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>globalRole</property-name>
+            <value>#{sessionHandler.globalRole}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>
+

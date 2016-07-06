@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+    <!-- List Clients handler -->
+    <managed-bean id="listClientsHandler">
+        <managed-bean-name>listClientsHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.ListClientsHandler</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Create Client handler -->
+    <managed-bean id="createClientHandler">
+        <managed-bean-name>createClientHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.CreateClientHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>clientManager</property-name>
+            <value>#{ejbHandler.clientManager}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>avatarDAO</property-name>
+            <value>#{ejbHandler.avatarDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>sessionHandler</property-name>
+            <value>#{sessionHandler}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Edit Client handler -->
+    <managed-bean id="editClientHandler">
+        <managed-bean-name>editClientHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.EditClientHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>avatarDAO</property-name>
+            <value>#{ejbHandler.avatarDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>sessionHandler</property-name>
+            <value>#{sessionHandler}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Admin Clients handler -->
+    <managed-bean id="adminClientRelationsHandler">
+        <managed-bean-name>adminClientRelationsHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.relation.AdminClientRelationsHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>roleDAO</property-name>
+            <value>#{ejbHandler.roleDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>relationDAO</property-name>
+            <value>#{ejbHandler.relationDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>sessionHandler</property-name>
+            <value>#{sessionHandler}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Invite Users handler -->
+    <managed-bean id="inviteUsersHandler">
+        <managed-bean-name>inviteUsersHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.relation.InviteUsersHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>userDAO</property-name>
+            <value>#{ejbHandler.userDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>relationDAO</property-name>
+            <value>#{ejbHandler.relationDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>mailer</property-name>
+            <value>#{ejbHandler.mailer}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>adminClientRelationsHandler</property-name>
+            <value>#{adminClientRelationsHandler}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Admin Friends handler -->
+    <managed-bean id="adminFriendsHandler">
+        <managed-bean-name>adminFriendsHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.friend.AdminFriendsHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>activeUser</property-name>
+            <value>#{sessionHandler.loggedInUser}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Show Client handler -->
+    <managed-bean id="showClientHandler">
+        <managed-bean-name>showClientHandler</managed-bean-name>
+        <managed-bean-class>pictochat.client.web.handler.client.ShowClientHandler</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>clientDAO</property-name>
+            <value>#{ejbHandler.clientDAO}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>
+

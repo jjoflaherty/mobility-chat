@@ -1,0 +1,5 @@
+
+.flag { width: 16px; height: 11px; background-size: 100% 100%; display: inline-block; margin-right: 2px; }
+
+.flag.flag-us { background-image: url("../images/flags/png/us.png"); }
+.flag.flag-nl { background-image: url("../images/flags/png/nl.png"); }

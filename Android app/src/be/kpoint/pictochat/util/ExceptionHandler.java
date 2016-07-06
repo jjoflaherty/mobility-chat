@@ -1,5 +1,7 @@
 package be.kpoint.pictochat.util;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.ref.WeakReference;
 
@@ -8,11 +10,12 @@ import android.app.Service;
 import android.content.Context;
 
 import be.kpoint.pictochat.App;
-import be.kpoint.pictochat.app.activities.ErrorActivity;
+import be.kpoint.pictochat.util.logging.FileLogItem;
 
 public class ExceptionHandler implements UncaughtExceptionHandler
 {
 	protected WeakReference<Context> weakContext;
+	private UncaughtExceptionHandler defaultHandler;
 
 	public ExceptionHandler(Activity activity) {
 		this((Context)activity);
@@ -22,16 +25,20 @@ public class ExceptionHandler implements UncaughtExceptionHandler
 	}
 	public ExceptionHandler(Context context) {
         this.weakContext = new WeakReference<Context>(context);
+        this.defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
     }
 
 	@Override
 	public void uncaughtException(Thread thread, Throwable ex) {
-		Context context = this.weakContext.get();
-		if (context != null) {
-			ErrorActivity.start(context, ex);
-		}
+		StringWriter writer = new StringWriter();
+		ex.printStackTrace(new PrintWriter(writer));
+		App.logToFile(FileLogItem.wtf("CrashHandler", "crash", ex.toString(), writer.toString()));
 
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(10);
+		App.processAndMailLogs("AbleChat Crash Report - ");
+
+		this.defaultHandler.uncaughtException(thread, ex);
+
+        /*android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(10);*/
 	}
 }

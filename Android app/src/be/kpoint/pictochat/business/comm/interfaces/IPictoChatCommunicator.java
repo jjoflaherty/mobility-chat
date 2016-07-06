@@ -1,7 +1,9 @@
 package be.kpoint.pictochat.business.comm.interfaces;
 
+import java.util.Date;
+
 import be.kpoint.pictochat.app.domain.Client;
-import be.kpoint.pictochat.app.domain.Friend;
+import be.kpoint.pictochat.app.domain.User;
 
 public interface IPictoChatCommunicator
 {
@@ -11,20 +13,24 @@ public interface IPictoChatCommunicator
 	public void joinRoom(Client client);
 	public void leaveRoom(Client client);
 
-	public void hostRoom(Client client, Friend friend);
-	public void closeRoom(Client client, Friend friend);
+	public void hostRoom(User local, User remote);
+	public void closeRoom(User local, User remote);
 
 	public void historyReceived(Client client, int amount);
 	public void historySent(Client client, int amount);
+	public void historyReceived(Client client, Date start);
+	public void historySent(Client client, Date start);
 
-	public void historyReceived(Client client, Friend friend, int amount);
-	public void historySent(Client client, Friend friend, int amount);
+	public void historyReceived(User local, User remote, int amount);
+	public void historySent(User local, User remote, int amount);
+	public void historyReceived(User local, User remote, Date start);
+	public void historySent(User local, User remote, Date start);
 
 	public void clientsHereNow(Client client);
-	public void friendsHereNow(Client client, Friend friend);
+	public void usersHereNow(User local, User remote);
 	public void coachesHereNow(Client client);
 	public void clientsPresence(Client client);
-	public void friendsPresence(Client client, Friend friend);
+	public void usersPresence(User local, User remote);
 	public void coachesPresence(Client client);
 
 	public void addTextMessageReceivedListener(ITextMessageReceivedListener listener);

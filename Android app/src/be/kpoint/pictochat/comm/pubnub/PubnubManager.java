@@ -2,6 +2,7 @@ package be.kpoint.pictochat.comm.pubnub;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.ComponentName;
@@ -87,10 +88,34 @@ public class PubnubManager
 	public void start() {
 		Context context = this.weakContext.get();
 		if (context != null) {
-			//context.registerReceiver(this.receiver, new IntentFilter(PubnubService.MESSAGE_INTENT)); //TODO Remove this if testing shows no problems
 			PubnubService.start(context, this.localMessenger);
-
 			onServiceStarted();
+		}
+	}
+
+	public void callWhenStarted(final ICallWhenPubnubManagerStartedListener listener) {
+		if (isStarted())
+			listener.onStarted();
+		else {
+			this.pubnubManagerListeners.add(new IPubnubManagerListener() {
+				@Override
+				public void onServiceConnected() {
+					PubnubManager.this.pubnubManagerListeners.remove(this);
+					listener.onStarted();
+				}
+				@Override
+				public void onRemoteMessengerReceived() {
+					PubnubManager.this.pubnubManagerListeners.remove(this);
+					listener.onStarted();
+				}
+
+				@Override
+				public void onServiceStopped() {}
+				@Override
+				public void onServiceStarted() {}
+				@Override
+				public void onServiceDisconnected() {}
+			});
 		}
 	}
 
@@ -186,6 +211,25 @@ public class PubnubManager
 			}
 		}
 	}
+	public void history(PubnubChannel channel, Date start) {
+		if (this.service != null)
+			this.service.history(channel, start);
+		else {
+			try {
+				Bundle data = new Bundle();
+				data.putSerializable(PubnubService.BUNDLE_CHANNEL, channel);
+				data.putSerializable(PubnubService.BUNDLE_TIME, start);
+
+				Message msg = Message.obtain();
+				msg.what = PubnubService.MSG_HISTORY_SINCE;
+				msg.setData(data);
+
+				this.remoteMessenger.send(msg);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	public void hereNow(PubnubChannel channel) {
 		Log.i(this.getClass().getSimpleName(), channel.getName());
 
@@ -262,18 +306,9 @@ public class PubnubManager
 	}
 
 
-	//Receiver
-	/* TODO Remove this if testing shows no problems
- 	private BroadcastReceiver receiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			Bundle extras = intent.getExtras();
-			String channel = extras.getString(PubnubService.BUNDLE_CHANNEL);
-			String message = extras.getString(PubnubService.BUNDLE_MESSAGE);
-
-			onMessageReceived(channel, message);
-		}
-	};*/
+	private void logException(Exception e) {
+		Log.e(this.getClass().getSimpleName(), e.toString());
+	}
 
 
 	//Messaging Handler
@@ -364,7 +399,7 @@ public class PubnubManager
 			try {
 				listener.onServiceStarted();
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 	private void onServiceStopped() {
@@ -372,7 +407,7 @@ public class PubnubManager
 			try {
 				listener.onServiceStopped();
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 
@@ -381,7 +416,7 @@ public class PubnubManager
 			try {
 				listener.onServiceConnected();
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 	private void onServiceDisconnected() {
@@ -389,7 +424,7 @@ public class PubnubManager
 			try {
 				listener.onServiceDisconnected();
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 
@@ -398,7 +433,7 @@ public class PubnubManager
 			try {
 				listener.onRemoteMessengerReceived();
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 
@@ -409,7 +444,7 @@ public class PubnubManager
 			try {
 				listener.onMessageReceived(pc, message);
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 	private void onHistoryReceived(String channel, String message) {
@@ -425,7 +460,7 @@ public class PubnubManager
 				try {
 					listener.onHistoryReceived(pc, jsonHistory.toString(), start, end);
 				} catch (Exception e) {
-					Log.e(this.getClass().getSimpleName(), e.toString());
+					logException(e);
 				}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -438,7 +473,7 @@ public class PubnubManager
 			try {
 				listener.onHereNowReceived(pc, message);
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 	private void onPresenceReceived(String channel, String message) {
@@ -448,7 +483,7 @@ public class PubnubManager
 			try {
 				listener.onPresenceReceived(pc, message);
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 	private void onGetStateReceived(String channel, String uuid, String state) {
@@ -458,7 +493,7 @@ public class PubnubManager
 			try {
 				listener.onGetStateReceived(pc, uuid, state);
 			} catch (Exception e) {
-				Log.e(this.getClass().getSimpleName(), e.toString());
+				logException(e);
 			}
 	}
 
@@ -550,5 +585,8 @@ public class PubnubManager
 		public void onServiceDisconnected();
 
 		public void onRemoteMessengerReceived();
+	}
+	public interface ICallWhenPubnubManagerStartedListener {
+		public void onStarted();
 	}
 }

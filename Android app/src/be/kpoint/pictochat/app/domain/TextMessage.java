@@ -1,6 +1,6 @@
 package be.kpoint.pictochat.app.domain;
 
-import android.text.format.Time;
+import java.util.Date;
 
 
 public class TextMessage
@@ -8,7 +8,7 @@ public class TextMessage
 	private String text;
 	private String uuid;
 	private String senderAppTime;
-	private Time serverTime;
+	private Date serverTime;
 	private String senderName;
 	private String senderImageUrl;
 	private Boolean sent;
@@ -35,18 +35,18 @@ public class TextMessage
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
-	
+
 	public String getSenderAppTime() {
-		return senderAppTime;
+		return this.senderAppTime;
 	}
 	public void setSenderAppTime(String senderAppTime) {
 		this.senderAppTime = senderAppTime;
 	}
 
-	public Time getServerTime() {
-		return serverTime;
+	public Date getServerTime() {
+		return this.serverTime;
 	}
-	public void setServerTime(Time serverTime) {
+	public void setServerTime(Date serverTime) {
 		this.serverTime = serverTime;
 	}
 
@@ -56,6 +56,7 @@ public class TextMessage
 	public void setSenderImageUrl(String senderImageUrl) {
 		this.senderImageUrl = senderImageUrl;
 	}
+
 
 
 	@Override
@@ -85,7 +86,7 @@ public class TextMessage
 		}
 		else if (!this.senderAppTime.equals(other.senderAppTime))
 			return false;
-		
+
 		if (this.text == null) {
 			if (other.text != null)
 				return false;
@@ -102,7 +103,7 @@ public class TextMessage
 
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.uuid.substring(0, 4) + " - " + this.senderAppTime + " - " + this.text;

@@ -9,7 +9,6 @@ public class Friend implements Serializable
 	private ClientId id;
 	private String firstName;
 	private String lastName;
-	private Boolean host;
 	private String imageUrl;
 
 	private Friend() {
@@ -19,12 +18,11 @@ public class Friend implements Serializable
 	{
 		this.id = new ClientId(id);
 	}
-	public static Friend create(long id, String firstName, String lastName, String imageUrl, Boolean host) {
+	public static Friend create(long id, String firstName, String lastName, String imageUrl) {
 		Friend user = new Friend(id);
 		user.firstName = firstName;
 		user.lastName = lastName;
 		user.imageUrl = imageUrl;
-		user.host = host;
 
 		return user;
 	}
@@ -46,9 +44,6 @@ public class Friend implements Serializable
 	public String getFullName()
 	{
 		return this.firstName + " " + this.lastName;
-	}
-	public Boolean getWillHost() {
-		return this.host;
 	}
 	public String getImageUrl() {
 		return this.imageUrl;

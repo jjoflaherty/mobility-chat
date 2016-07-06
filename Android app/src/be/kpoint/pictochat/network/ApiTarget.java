@@ -11,13 +11,15 @@ public class ApiTarget {
 	private ApiServer server;
 	private String target;
 	private boolean versioned;
+	private boolean allowCache;
 	private ArrayList<NameValuePair> parameters;
 
-	public ApiTarget(ApiServer server, String target, boolean versioned)
+	public ApiTarget(ApiServer server, String target, boolean versioned, boolean allowCache)
 	{
 		this.server = server;
 		this.target = target;
 		this.versioned = versioned;
+		this.allowCache = allowCache;
 	}
 
 	public ApiTarget setUrlParameters(ArrayList<NameValuePair> parameters)
@@ -41,7 +43,7 @@ public class ApiTarget {
 
 	@Override
 	public ApiTarget clone() {
-		ApiTarget clone = new ApiTarget(this.server, this.target, this.versioned);
+		ApiTarget clone = new ApiTarget(this.server, this.target, this.versioned, this.allowCache);
 		clone.parameters = this.parameters;
 
 		return clone;
@@ -49,6 +51,9 @@ public class ApiTarget {
 
 	public boolean isVersioned() {
 		return this.versioned;
+	}
+	public boolean canBeCached() {
+		return this.allowCache;
 	}
 
 	@Override

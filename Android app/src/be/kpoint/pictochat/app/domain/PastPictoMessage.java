@@ -1,18 +1,19 @@
 package be.kpoint.pictochat.app.domain;
 
-import android.text.format.Time;
+import java.util.Date;
+
 
 public class PastPictoMessage extends PictoMessage
 {
-	private Time time;
+	private Date time;
 
-	public PastPictoMessage(String text, String senderName, Boolean sent, Time time) {
+	public PastPictoMessage(String text, String senderName, Boolean sent, Date time) {
 		super(text, senderName, sent);
 
 		this.time = time;
 	}
 
-	public Time getTime() {
+	public Date getTime() {
 		return this.time;
 	}
 }

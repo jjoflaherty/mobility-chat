@@ -1,43 +1,42 @@
 package be.kpoint.pictochat.app.domain;
 
 import android.graphics.Bitmap;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 
 import be.kpoint.pictochat.App;
-import be.kpoint.pictochat.util.ImageDownloader;
-import be.kpoint.pictochat.util.ParallelAsyncTask;
+import be.kpoint.pictochat.util.WebImageView;
 
 public class RoomInfo
 {
-	private Friend friend;
+	private User user;
 	private String largeText;
 	private String smallText;
 	private String imageId;
 	private String imageUrl;
+	public int unread = 0;
 
-	private OnClickListener clickListener;
+	private OnRoomClickListener roomClickListener;
 
 	private RoomInfo() {
 		//Needed for serialization
 	}
-	public static RoomInfo create(Friend friend, OnClickListener clickListener) {
-		RoomInfo room = RoomInfo.create(friend.getFirstName(), friend.getLastName(), clickListener);
-		room.friend = friend;
+	public static RoomInfo create(User user, OnRoomClickListener roomClickListener) {
+		RoomInfo room = RoomInfo.create(user.getFirstName(), user.getLastName(), roomClickListener);
+		room.user = user;
+		room.setImageId(user.getClass().getSimpleName() + "_" + user.getId());
 
 		return room;
 	}
-	public static RoomInfo create(String largeText, String smallText, OnClickListener clickListener) {
+	public static RoomInfo create(String largeText, String smallText, OnRoomClickListener roomClickListener) {
 		RoomInfo room = new RoomInfo();
 		room.largeText = largeText;
 		room.smallText = smallText;
-		room.clickListener = clickListener;
+		room.roomClickListener = roomClickListener;
 
 		return room;
 	}
 
-	public Friend getFriend() {
-		return this.friend;
+	public User getUser() {
+		return this.user;
 	}
 	public String getLargeText() {
 		return this.largeText;
@@ -46,8 +45,8 @@ public class RoomInfo
 		return this.smallText;
 	}
 
-	public OnClickListener getClickListener() {
-		return this.clickListener;
+	public OnRoomClickListener getRoomClickListener() {
+		return this.roomClickListener;
 	}
 
 	protected void setImageId(String imageId) {
@@ -57,7 +56,7 @@ public class RoomInfo
 		this.imageUrl = imageUrl;
 	}
 
-	public void showInImageView(ImageView view, int dimension)
+	public void showInImageView(WebImageView view, int dimension)
 	{
 		if (this.imageId != null) {
 			Bitmap bitmap = App.getImageCache().getImage(this.imageId);
@@ -69,8 +68,12 @@ public class RoomInfo
 
 		if (this.imageUrl != null) {
 			String requestUrl = this.imageUrl + "&dimension=" + dimension / 2;
-			ImageDownloader downloader = new ImageDownloader(this.imageId, requestUrl, view, 200, 200);
-			ParallelAsyncTask.executeAsyncTask(downloader);
+			view.load(this.imageId, requestUrl, view, 200, 200);
 		}
+	}
+
+	public interface OnRoomClickListener
+	{
+		public void onClick(RoomInfo room);
 	}
 }

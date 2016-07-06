@@ -12,23 +12,22 @@ public class Coach extends User
 
 
 	private CoachId id;
-	private String imageUrl;
 	private HashMap<String, Client> clients = new HashMap<String, Client>();
 
 
 	public Coach(CoachId id, String firstName, String lastName, String imageUrl) {
-		super(firstName, lastName);
+		super(firstName, lastName, imageUrl);
 
 		this.id = id;
-		this.imageUrl = imageUrl;
 	}
 
 	public static Coach buildFromRest(be.kpoint.pictochat.api.rest.coach.Coach coach) {
 		Coach c = new Coach(coach.getId(), coach.getFirstName(), coach.getLastName(), coach.getImageUrl());
 
 		for (be.kpoint.pictochat.api.rest.client.Client client : coach.getClients()) {
-			Client cl = new Client(client.getId(), client.getFirstName(), client.getLastName());
-			cl.setPin(client.getPin());
+			Client cl = Client.buildFromRest(client);
+			//new Client(client.getId(), client.getFirstName(), client.getLastName());
+			//cl.setCode(client.getCode());
 
 			c.addClient(cl);
 		}
@@ -37,11 +36,9 @@ public class Coach extends User
 	}
 
 
+	@Override
 	public CoachId getId() {
 		return this.id;
-	}
-	public String getImageUrl() {
-		return this.imageUrl;
 	}
 	public HashMap<String, Client> getClients() {
 		return this.clients;
@@ -56,6 +53,7 @@ public class Coach extends User
 	public void addClient(Client client) {
 		this.clients.put(client.getRoom().getChannelName(), client);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
